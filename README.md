@@ -7,6 +7,6 @@ Controls:
 
 Credits/sources
 
-Made for [Ludum Dare X](https://ldjam.com/events/ludum-dare/X/game-name) by X and Y.
+Made for [Ludum Dare 53](https://ldjam.com/events/ludum-dare/X/game-name) by X and Y.
 
 Made in Godot. All art, models and audio was made from scratch during the jam.

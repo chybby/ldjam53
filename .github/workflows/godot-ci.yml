@@ -3,9 +3,9 @@ on: [push, workflow_dispatch]
 
 env:
   GODOT_VERSION: 4.0.2
-  EXPORT_NAME: ldjam-template
+  EXPORT_NAME: ldjam53
   ITCHIO_USERNAME: chybby
-  ITCHIO_GAME: ldjam-template
+  ITCHIO_GAME: ldjam53
 
 jobs:
   build-windows:
