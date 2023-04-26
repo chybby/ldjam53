@@ -15,10 +15,18 @@ run/main_scene="res://menus/MainMenuScreen.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
+[aseprite]
+
+animation/layers/exclusion_pattern="_$"
+
 [display]
 
 window/size/width=1920
 window/size/height=1080
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
 
 [gui]
 
