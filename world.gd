@@ -4,8 +4,10 @@ signal day_ended
 
 const PackageScene = preload("res://package/package.tscn")
 const Package = preload("res://package/package.gd")
+const CustomerScene = preload("res://customer/customer.tscn")
 
 @onready var level := $Level
+@onready var customer_entry_position := $Level/CustomerEntryPoint
 @onready var player := $Player
 @onready var scanner := $Scanner
 @onready var package_spawn_timer := $PackageSpawnTimer
@@ -39,7 +41,6 @@ func _on_package_spawn_timer_timeout():
     add_child(package)
     unclaimed_packages.append(package)
     undelivered_packages.append(package)
-
     packages_left_to_spawn -= 1
     if packages_left_to_spawn == 0:
         package_spawn_timer.stop()
@@ -58,3 +59,9 @@ func _on_delivery_zone_package_delivered(package: Package):
 
         # End the day.
         day_ended.emit()
+
+
+func _on_customer_spawn_timer_timeout():
+    var customer := CustomerScene.instantiate()
+    customer.position = customer_entry_position.position
+    add_child(customer)

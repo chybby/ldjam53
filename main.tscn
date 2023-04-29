@@ -75,7 +75,6 @@ size = 0
 
 [node name="Package2" parent="World" instance=ExtResource("6_okuef")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 7.97484)
-mass = 0.6
 
 [node name="Package3" parent="World" instance=ExtResource("6_okuef")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 8.47319)
@@ -84,6 +83,7 @@ size = 2
 
 [node name="Package4" parent="World" instance=ExtResource("6_okuef")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 10.3612)
+mass = 0.5
 shape = 0
 size = 0
 
@@ -97,6 +97,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 11.9294)
 mass = 1.5
 shape = 0
 size = 2
+
+[node name="CustomerSpawnTimer" type="Timer" parent="World"]
+wait_time = 2.0
+one_shot = true
+autostart = true
 
 [node name="GUI" type="Control" parent="."]
 process_mode = 3
@@ -122,6 +127,7 @@ layout_mode = 1
 [connection signal="day_ended" from="World" to="." method="_on_world_day_ended"]
 [connection signal="package_delivered" from="World/DeliveryZone" to="World" method="_on_delivery_zone_package_delivered"]
 [connection signal="timeout" from="World/PackageSpawnTimer" to="World" method="_on_package_spawn_timer_timeout"]
+[connection signal="timeout" from="World/CustomerSpawnTimer" to="World" method="_on_customer_spawn_timer_timeout"]
 [connection signal="game_started" from="GUI" to="." method="_on_gui_game_started"]
 [connection signal="mouse_sensitivity_changed" from="GUI" to="." method="_on_gui_mouse_sensitivity_changed"]
 [connection signal="unpaused" from="GUI" to="." method="_on_gui_unpaused"]
