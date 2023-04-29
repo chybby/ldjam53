@@ -26,20 +26,20 @@ func _on_pause_screen_closed():
     pause_screen.set_process_input(false)
     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
     hud.visible = true
-    emit_signal("unpaused")
+    unpaused.emit()
 
 func _on_main_menu_screen_game_started():
     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
     main_menu_screen.set_process_input(false)
     main_menu_screen.visible = false
     hud.visible = true
-    emit_signal("game_started")
+    game_started.emit()
 
 func set_mouse_sensitivity(mouse_sensitivity: float):
     pause_screen.set_mouse_sensitivity(mouse_sensitivity)
 
 func _on_pause_screen_mouse_sensitivity_changed(mouse_sensitivity: float):
-    emit_signal("mouse_sensitivity_changed", mouse_sensitivity)
+    mouse_sensitivity_changed.emit(mouse_sensitivity)
 
 func _on_pause_screen_volume_changed(volume: float):
-    emit_signal("volume_changed", volume)
+    volume_changed.emit(volume)

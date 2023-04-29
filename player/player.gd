@@ -24,7 +24,7 @@ func _unhandled_input(event):
         camera.rotate_x(-event.relative.y * mouse_sensitivity)
         camera.rotation.x = clamp(camera.rotation.x, -1.2, 1.2)
     elif event.is_action_pressed('interact'):
-        if hovered_object:
+        if hovered_object and is_instance_valid(hovered_object):
             if hovered_object.has_method('interact'):
                 hovered_object.interact()
             if hovered_object.is_in_group('pickup'):
@@ -35,15 +35,18 @@ func _unhandled_input(event):
                     print('Holding %s' % held_object)
                     hovered_object = null
     elif event.is_action_released('interact'):
-        if held_object:
-            held_object.linear_damp = 0
-            held_object.angular_damp = 0
-            print('Dropped %s' % held_object)
-            held_object = null
+        drop_object()
+
+func drop_object():
+    if held_object:
+        held_object.linear_damp = 0
+        held_object.angular_damp = 0
+        print('Dropped %s' % held_object)
+        held_object = null
 
 func _process(delta):
     if interact_ray.get_collider() != hovered_object:
-        if hovered_object and hovered_object.has_method('hover'):
+        if hovered_object and is_instance_valid(hovered_object) and hovered_object.has_method('hover'):
             hovered_object.hover(false)
         hovered_object = interact_ray.get_collider()
         if hovered_object and hovered_object.has_method('hover'):
@@ -63,7 +66,6 @@ func _physics_process(delta):
         speed = sprint_speed
 
     # Get the input direction and handle the movement/deceleration.
-    # As good practice, you should replace UI actions with custom gameplay actions.
     var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
     var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
     if direction:
@@ -80,3 +82,8 @@ func _physics_process(delta):
         var force_direction: Vector3 = held_item_marker.global_position - held_object.global_position
         held_object.apply_central_force(force_direction * held_item_strength)
 
+func reset():
+    rotation = Vector3.ZERO
+    camera.rotation = Vector3.ZERO
+    hovered_object = null
+    held_object = null

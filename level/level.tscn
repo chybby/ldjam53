@@ -289,6 +289,8 @@ omni_range = 20.19
 [node name="PackageSpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8201, 3.46955, -8.98413)
 
+[node name="PlayerSpawnPoint" type="Marker3D" parent="."]
+
 [node name="Conveyor" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9805, 0, -9)
 collision_layer = 4
