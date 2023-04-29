@@ -5,6 +5,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jakkr"]
 
 [node name="Player" type="CharacterBody3D"]
+collision_mask = 3
 script = ExtResource("1_sl7gb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -12,4 +13,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00165, 0)
 shape = SubResource("CapsuleShape3D_jakkr")
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68956, -0.203962)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -0.2)
+
+[node name="InteractRay" type="RayCast3D" parent="Camera"]
+target_position = Vector3(0, 0, -3)
+collision_mask = 2
+
+[node name="HeldItemMarker" type="Marker3D" parent="Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.352177, -1.82517)

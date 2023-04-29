@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://wn7300ox6nll"]
+
+[ext_resource type="Script" path="res://scanner/scanner.gd" id="1_vv4rg"]
+[ext_resource type="PackedScene" uid="uid://c80lgts35xsrt" path="res://scanner/scanner_ui.tscn" id="2_kaamb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i5iv6"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bo4ai"]
+size = Vector3(1, 0.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_33t8x"]
+size = Vector3(0.820006, 0.704278, 0.806946)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_xx3pi"]
+viewport_path = NodePath("Viewport")
+
+[node name="Scanner" type="Node3D"]
+script = ExtResource("1_vv4rg")
+
+[node name="Base" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101417, 0)
+shape = SubResource("BoxShape3D_i5iv6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0998402, 0)
+mesh = SubResource("BoxMesh_bo4ai")
+
+[node name="ScanArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ScanArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55069, 0)
+shape = SubResource("BoxShape3D_33t8x")
+
+[node name="Screen" type="Sprite3D" parent="."]
+transform = Transform3D(-8.74228e-09, 0, 0.2, 0, 0.2, 0, -0.2, 0, -8.74228e-09, -0.484494, 1.48547, 0)
+texture = SubResource("ViewportTexture_xx3pi")
+
+[node name="Viewport" type="SubViewport" parent="."]
+
+[node name="ScannerUI" parent="Viewport" instance=ExtResource("2_kaamb")]
+
+[connection signal="body_entered" from="ScanArea" to="." method="_on_scan_area_body_entered"]
+[connection signal="body_exited" from="ScanArea" to="." method="_on_scan_area_body_exited"]
