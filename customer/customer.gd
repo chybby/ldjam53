@@ -40,5 +40,5 @@ func _on_area_3d_body_entered(body):
     
 func _on_area_3d_area_entered(area):
     print(area.collision_layer)
-    if area.collision_layer == 1 << 3 and is_satisfied:
+    if area.collision_layer == 1 << 4 and is_satisfied:
         queue_free()

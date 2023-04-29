@@ -5,6 +5,22 @@ enum Shape {BOX, TUBE}
 enum Size {SMALL, MEDIUM, LARGE}
 enum Company {PERSONAL_DELIVERY_CONGLOMERATE, LOGISTICS_CORP, SHIP_FOR_LESS}
 
+class Address:
+    var street_number: String
+    var street: String
+    var suburb: String
+    var postcode: String
+    var state: String = 'NSW'
+
+    func _init(_street_number: String, _street: String, _suburb: String, _postcode: String):
+        street_number = _street_number
+        street = _street
+        suburb = _suburb
+        postcode = _postcode
+
+    func _to_string():
+        return '%s %s\n%s %s %s' % [street_number, street, suburb, postcode, state]
+
 @export var shape := Shape.BOX:
     set(value):
         shape = value
@@ -22,6 +38,8 @@ enum Company {PERSONAL_DELIVERY_CONGLOMERATE, LOGISTICS_CORP, SHIP_FOR_LESS}
 
 var first_name: String
 var last_name: String
+
+var address: Address
 
 @onready var collision_shape := $CollisionShape3D
 @onready var mesh := $MeshInstance3D
@@ -45,14 +63,14 @@ func update_model():
             match size:
                 Size.SMALL:
                     # TODO: weight doesn't necessarily correspond to size.
-                    size_vector = Vector3(.2, .2, .2)
-                    mass = 0.3
+                    size_vector = Vector3(.2, .3, .4)
+                    mass = 0.5
                 Size.MEDIUM:
-                    size_vector = Vector3(.4, .4, .4)
-                    mass = 0.7
+                    size_vector = Vector3(.5, .4, .6)
+                    mass = 0.8
                 Size.LARGE:
-                    size_vector = Vector3(1, 1, 1)
-                    mass = 2
+                    size_vector = Vector3(.8, .7, 1.1)
+                    mass = 1.5
             collision_shape.shape.size = size_vector
             mesh.mesh.size = size_vector
         Shape.TUBE:
@@ -63,17 +81,17 @@ func update_model():
             var radius: float
             match size:
                 Size.SMALL:
-                    height = 0.4
-                    radius = 0.05
-                    mass = 0.2
+                    height = 0.6
+                    radius = 0.08
+                    mass = 0.4
                 Size.MEDIUM:
-                    height = 0.5
+                    height = 1
                     radius = 0.1
-                    mass = 0.5
+                    mass = 0.6
                 Size.LARGE:
-                    height = 1.5
-                    radius = 0.15
-                    mass = 1
+                    height = 1.6
+                    radius = 0.12
+                    mass = .8
             collision_shape.shape.height = height
             collision_shape.shape.radius = radius
             mesh.mesh.height = height
@@ -96,6 +114,7 @@ func randomize():
     company = get_random_company()
     first_name = get_random_first_name()
     last_name = get_random_last_name()
+    address = get_random_address()
 
 func _to_string():
     return 'Package{name: "%s %s"}' % [first_name, last_name]
@@ -129,20 +148,15 @@ static func get_random_address():
     # At first we can only include those suburbs.
     # Perhaps later it can be a game mechanic to redirect packages to other post offices.
 
-    var d := {}
-    d["street_number"] = randi() % 99 + 1
-
     var file := FileAccess.open("res://package/addresses.json", FileAccess.READ)
     var data: Dictionary = JSON.parse_string(file.get_as_text())
 
-    var i := randi() % data.keys().size()
-    var suburb: String = data.keys()[i].capitalize()
-    d["suburb"] = suburb
-    d["postcode"] = data[suburb]["postcode"]
-    i = randi() % data[suburb]["streets"].size()
-    d["street"] = data[suburb]["streets"][i]
+    var suburb: String = data.keys().pick_random().capitalize()
 
-    # {street_number} {street}
-    # {suburb} NSW {postcode}
-    return "{street_number} {street}\n{suburb} NSW {postcode}".format(d)
+    return Address.new(
+        str(randi() % 99 + 1),
+        data[suburb]["streets"].pick_random(),
+        suburb,
+        str(data[suburb]["postcode"]),
+    )
 

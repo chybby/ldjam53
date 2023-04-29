@@ -25,8 +25,8 @@ size = Vector3(2.01131, 1.98906, 0.136174)
 size = Vector3(1.92868, 1.99498, 0.434641)
 
 [node name="customer" type="CharacterBody3D"]
-collision_layer = 4
-collision_mask = 7
+collision_layer = 8
+collision_mask = 31
 script = ExtResource("1_q22ik")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -41,8 +41,8 @@ mesh = SubResource("PlaneMesh_tlqr0")
 shape = SubResource("BoxShape3D_4kcen")
 
 [node name="Area3D" type="Area3D" parent="."]
-collision_layer = 4
-collision_mask = 15
+collision_layer = 8
+collision_mask = 31
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_ea4jk")

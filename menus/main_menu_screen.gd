@@ -1,6 +1,6 @@
 extends Control
 
-@onready var label : Label = $Panel/Label
+signal game_started
 
-func _on_Button_pressed() -> void:
-    label.text = "You pressed the button!"
+func _on_start_button_pressed():
+    emit_signal("game_started")
