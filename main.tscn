@@ -37,7 +37,95 @@ environment = SubResource("Environment_lciql")
 camera_attributes = SubResource("CameraAttributesPractical_owjb4")
 
 [node name="Package" parent="World" instance=ExtResource("5_252ea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70651, -5.84931)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.16406, 2.70651, -5.84931)
+size = 0
+
+[node name="Package2" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02867, 2.70651, -5.84931)
+
+[node name="Package3" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85109, 2.70651, -5.84931)
+size = 2
+
+[node name="Package4" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.431175, 2.70651, -5.84931)
+shape = 0
+size = 0
+
+[node name="Package5" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2406, 2.70651, -5.84931)
+shape = 0
+
+[node name="Package6" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.57075, 2.70651, -5.84931)
+shape = 0
+size = 2
+
+[node name="Package7" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.16406, 2.70651, -4.17173)
+size = 0
+company = 1
+
+[node name="Package8" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02867, 2.70651, -4.17173)
+company = 1
+
+[node name="Package9" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85109, 2.70651, -4.17173)
+size = 2
+company = 1
+
+[node name="Package10" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.431175, 2.70651, -4.17173)
+shape = 0
+size = 0
+company = 1
+
+[node name="Package11" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2406, 2.70651, -4.17173)
+shape = 0
+company = 1
+
+[node name="Package12" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.57075, 2.70651, -4.17173)
+shape = 0
+size = 2
+company = 1
+
+[node name="Package13" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.16406, 2.70651, -2.60441)
+size = 0
+company = 2
+
+[node name="Package14" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.02867, 2.70651, -2.60441)
+company = 2
+
+[node name="Package15" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.85109, 2.70651, -2.60441)
+size = 2
+company = 2
+
+[node name="Package16" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.431175, 2.70651, -2.60441)
+shape = 0
+size = 0
+company = 2
+
+[node name="Package17" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2406, 2.70651, -2.60441)
+shape = 0
+company = 2
+
+[node name="Package18" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.57075, 2.70651, -2.60441)
+shape = 0
+size = 2
+company = 2
+
+[node name="PackageSpawnTimer" type="Timer" parent="World"]
+wait_time = 2.0
+autostart = true
 
 [node name="GUI" type="Control" parent="."]
 process_mode = 3
@@ -58,5 +146,6 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[connection signal="timeout" from="World/PackageSpawnTimer" to="World" method="_on_package_spawn_timer_timeout"]
 [connection signal="unpaused" from="GUI" to="." method="_on_gui_unpaused"]
 [connection signal="closed" from="GUI/PauseScreen" to="GUI" method="_on_pause_screen_closed"]

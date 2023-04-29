@@ -76,6 +76,7 @@ mesh = SubResource("BoxMesh_nyrff")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
 
 [node name="Mesh" type="MeshInstance3D" parent="Ceiling"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
 mesh = SubResource("PlaneMesh_lnlwk")
 skeleton = NodePath("../..")
 
@@ -86,3 +87,6 @@ shape = SubResource("WorldBoundaryShape3D_t4nq7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.96277, 0)
 shadow_enabled = true
 omni_range = 20.361
+
+[node name="PackageSpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -7)
