@@ -12,5 +12,7 @@ func _on_scan_area_body_exited(body: Node3D):
 func update_screen(body: Node3D):
     if scan_area.get_overlapping_bodies().size() == 1:
         scanner_ui.set_name_label(body.first_name + ' ' + body.last_name)
+        scanner_ui.set_address_label(str(body.address))
     else:
         scanner_ui.set_name_label('Scan something')
+        scanner_ui.set_address_label('Scan something')
