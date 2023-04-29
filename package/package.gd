@@ -111,7 +111,7 @@ static func get_random_size():
     return Size.values().pick_random()
 
 static func get_random_company():
-    return Company.values().pick_random()
+    return Company.values()[randi_range(0, Company.size()-1)]
 
 static func get_random_first_name():
     var file := FileAccess.open(FIRST_NAMES_FILE, FileAccess.READ)
@@ -123,3 +123,26 @@ static func get_random_last_name():
     var file := FileAccess.open(FIRST_NAMES_FILE, FileAccess.READ)
     var names = file.get_as_text().split('\n', false)
     return names[randi_range(0, names.size()-1)] + 'son'
+
+static func get_random_address():
+    # The post office would serve only a few suburbs / districts.
+    # At first we can only include those suburbs.
+    # Perhaps later it can be a game mechanic to redirect packages to other post offices.
+
+    var d := {}
+    d["street_number"] = randi() % 99 + 1
+
+    var file := FileAccess.open("res://package/addresses.json", FileAccess.READ)
+    var data: Dictionary = JSON.parse_string(file.get_as_text())
+
+    var i := randi() % data.keys().size()
+    var suburb: String = data.keys()[i].capitalize()
+    d["suburb"] = suburb
+    d["postcode"] = data[suburb]["postcode"]
+    i = randi() % data[suburb]["streets"].size()
+    d["street"] = data[suburb]["streets"][i]
+
+    # {street_number} {street}
+    # {suburb} NSW {postcode}
+    return "{street_number} {street}\n{suburb} NSW {postcode}".format(d)
+
