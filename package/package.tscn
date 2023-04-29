@@ -2,28 +2,28 @@
 
 [ext_resource type="Script" path="res://package/package.gd" id="1_1h61k"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1iqvc"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lqv3h"]
 height = 0.5
 radius = 0.1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_apyf4"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gyfwp"]
 albedo_color = Color(0.832031, 0.706029, 0.18749, 1)
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_n58ff"]
-material = SubResource("StandardMaterial3D_apyf4")
+[sub_resource type="CylinderMesh" id="CylinderMesh_7aq7w"]
+material = SubResource("StandardMaterial3D_gyfwp")
 top_radius = 0.1
 bottom_radius = 0.1
 height = 0.5
 
-[node name="Package" type="RigidBody3D" groups=["pickup"]]
+[node name="Package" type="RigidBody3D"]
 collision_layer = 2
-collision_mask = 3
+collision_mask = 7
 mass = 0.5
 script = ExtResource("1_1h61k")
 shape = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CylinderShape3D_1iqvc")
+shape = SubResource("CylinderShape3D_lqv3h")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CylinderMesh_n58ff")
+mesh = SubResource("CylinderMesh_7aq7w")

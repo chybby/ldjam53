@@ -102,7 +102,7 @@ size = 0
 company = 1
 
 [node name="Package11" parent="World" instance=ExtResource("5_252ea")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2406, 2.70651, -4.17173)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.63175, 2.1404, 4.23717)
 mass = 0.7
 shape = 0
 company = 1
@@ -157,6 +157,11 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 9.2083
 wait_time = 2.0
 autostart = true
 
+[node name="CustomerSpawnTimer" type="Timer" parent="World"]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
 [node name="GUI" type="Control" parent="."]
 process_mode = 3
 layout_mode = 3
@@ -193,5 +198,6 @@ texture = SubResource("GradientTexture2D_pfw6s")
 expand_mode = 1
 
 [connection signal="timeout" from="World/PackageSpawnTimer" to="World" method="_on_package_spawn_timer_timeout"]
+[connection signal="timeout" from="World/CustomerSpawnTimer" to="World" method="_on_customer_spawn_timer_timeout"]
 [connection signal="unpaused" from="GUI" to="." method="_on_gui_unpaused"]
 [connection signal="closed" from="GUI/PauseScreen" to="GUI" method="_on_pause_screen_closed"]

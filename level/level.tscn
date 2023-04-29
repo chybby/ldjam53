@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bewap3blcn6p6"]
+[gd_scene load_steps=8 format=3 uid="uid://bewap3blcn6p6"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_8ll5v"]
 
@@ -15,6 +15,9 @@ size = Vector3(20, 5, 1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_t4nq7"]
 plane = Plane(0, -1, 0, 0)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5412h"]
+size = Vector3(3.44971, 5.69378, 3.18266)
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_8ll5v")
@@ -90,3 +93,17 @@ omni_range = 20.361
 
 [node name="PackageSpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -7)
+
+[node name="CustomerEntryPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.94313, 2.29008, 7.92921)
+
+[node name="CustomerServingPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.999179, 2.40827, -1.71368)
+
+[node name="CustomerExitArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.73141, 0, 8.46616)
+collision_layer = 8
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CustomerExitArea"]
+shape = SubResource("BoxShape3D_5412h")
