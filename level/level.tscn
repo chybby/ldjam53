@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bewap3blcn6p6"]
+[gd_scene load_steps=34 format=3 uid="uid://bewap3blcn6p6"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_8ll5v"]
 
@@ -44,10 +44,16 @@ size = Vector3(16, 5, 1)
 size = Vector3(16, 5, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bgk5q"]
-size = Vector3(20, 1.2, 1)
+size = Vector3(11, 1.2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_4d5bc"]
-size = Vector3(20, 1.2, 1)
+size = Vector3(11, 1.2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wf4s5"]
+size = Vector3(11, 1.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yk2dt"]
+size = Vector3(11, 1.5, 1)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_t4nq7"]
 plane = Plane(0, -1, 0, 0)
@@ -202,16 +208,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2.5, 0)
 mesh = SubResource("BoxMesh_w4waj")
 
 [node name="Counter" type="StaticBody3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.91875, 9.48857)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.49995, -1.91875, 9.90297)
 collision_layer = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Counter"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.180928, 2.5, 0)
 shape = SubResource("BoxShape3D_bgk5q")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Counter"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 2.5, 0)
 mesh = SubResource("BoxMesh_4d5bc")
+
+[node name="TopCounter" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.49995, 1.75521, 9.90297)
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TopCounter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.180928, 2.5, 0)
+shape = SubResource("BoxShape3D_wf4s5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TopCounter"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 2.5, 0)
+mesh = SubResource("BoxMesh_yk2dt")
 
 [node name="Ceiling" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 2.5)
@@ -226,34 +244,58 @@ skeleton = NodePath("../..")
 shape = SubResource("WorldBoundaryShape3D_t4nq7")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.96277, -4.28561)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.61425, -3.28561)
+light_energy = 1.502
+light_bake_mode = 1
 shadow_enabled = true
-omni_range = 13.8979
+shadow_opacity = 0.5
+shadow_blur = 2.0
+omni_range = 20.19
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6495, 4.96277, -4.28561)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6495, 4.61425, -3.28561)
+light_energy = 1.502
+light_bake_mode = 1
 shadow_enabled = true
-omni_range = 13.8979
+shadow_opacity = 0.5
+shadow_blur = 2.0
+omni_range = 20.19
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90403, 4.96277, -4.28561)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90403, 4.61425, -3.28561)
+light_energy = 1.502
+light_bake_mode = 1
 shadow_enabled = true
-omni_range = 13.8979
+shadow_opacity = 0.5
+shadow_blur = 2.0
+omni_range = 20.19
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.96277, 9.46439)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.61425, 9.46439)
+light_energy = 1.502
+light_bake_mode = 1
 shadow_enabled = true
-omni_range = 13.8979
+shadow_opacity = 0.5
+shadow_blur = 2.0
+omni_range = 20.19
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6495, 4.96277, 9.46439)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.6495, 4.61425, 9.46439)
+light_energy = 1.502
+light_bake_mode = 1
 shadow_enabled = true
-omni_range = 13.8979
+shadow_opacity = 0.5
+shadow_blur = 2.0
+omni_range = 20.19
 
 [node name="OmniLight3D6" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90403, 4.96277, 9.46439)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.90403, 4.61425, 9.46439)
+light_energy = 1.502
+light_bake_mode = 1
 shadow_enabled = true
-omni_range = 13.8979
+shadow_opacity = 0.5
+shadow_blur = 2.0
+omni_range = 20.19
 
 [node name="PackageSpawnPoint" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8201, 3.46955, -8.98413)
