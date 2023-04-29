@@ -7,6 +7,5 @@ func _input(event):
         emit_signal("closed")
         get_viewport().set_input_as_handled()
 
-
 func _on_close_button_pressed():
     emit_signal("closed")

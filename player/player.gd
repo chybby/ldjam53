@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
-@export var speed := 5.0
+@export var walk_speed := 3.0
+@export var sprint_speed := 6.0
 @export var jump_velocity := 4.5
 @export var mouse_sensitivity := 0.002
 @export var held_item_strength := 150
@@ -56,6 +57,10 @@ func _physics_process(delta):
     # Handle Jump.
     if Input.is_action_just_pressed("jump") and is_on_floor():
         velocity.y = jump_velocity
+
+    var speed = walk_speed
+    if Input.is_action_pressed("sprint"):
+        speed = sprint_speed
 
     # Get the input direction and handle the movement/deceleration.
     # As good practice, you should replace UI actions with custom gameplay actions.
