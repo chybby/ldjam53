@@ -5,7 +5,7 @@ var PackageScene = preload("res://package/package.tscn")
 @onready var level := $Level
 @onready var package_spawn_timer := $PackageSpawnTimer
 
-var packages_left = 10
+var packages_left = 15
 
 func _on_package_spawn_timer_timeout():
     var package := PackageScene.instantiate()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bk5cj4vt600fw"]
+[gd_scene load_steps=15 format=3 uid="uid://bk5cj4vt600fw"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dkgit"]
 [ext_resource type="Script" path="res://world.gd" id="2_5pf3l"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bewap3blcn6p6" path="res://level/level.tscn" id="3_s1u4l"]
 [ext_resource type="PackedScene" uid="uid://dxmtgq1vffaeq" path="res://menus/main_menu_screen.tscn" id="4_nqhdg"]
 [ext_resource type="PackedScene" uid="uid://diecf34cipg7k" path="res://player/player.tscn" id="4_qqmf7"]
+[ext_resource type="PackedScene" uid="uid://sdnpsqpox0dm" path="res://package/package.tscn" id="6_okuef"]
 [ext_resource type="PackedScene" uid="uid://wn7300ox6nll" path="res://scanner/scanner.tscn" id="6_qxux1"]
 [ext_resource type="PackedScene" uid="uid://dg5ljrugpyfv2" path="res://menus/pause_screen.tscn" id="8_dfw4l"]
 [ext_resource type="PackedScene" uid="uid://dsdesb5wro10h" path="res://player/hud.tscn" id="9_s8eft"]
@@ -60,8 +61,38 @@ camera_attributes = SubResource("CameraAttributesPractical_owjb4")
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -0.154526, 0, 2.90315)
 
 [node name="PackageSpawnTimer" type="Timer" parent="World"]
-wait_time = 5.0
+wait_time = 4.0
 autostart = true
+
+[node name="Package" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 7.60952)
+mass = 0.4
+size = 0
+
+[node name="Package2" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 7.97484)
+mass = 0.6
+
+[node name="Package3" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 8.47319)
+mass = 0.8
+size = 2
+
+[node name="Package4" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 10.3612)
+shape = 0
+size = 0
+
+[node name="Package5" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 10.9024)
+mass = 0.8
+shape = 0
+
+[node name="Package6" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 11.9294)
+mass = 1.5
+shape = 0
+size = 2
 
 [node name="GUI" type="Control" parent="."]
 process_mode = 3

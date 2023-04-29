@@ -63,14 +63,14 @@ func update_model():
             match size:
                 Size.SMALL:
                     # TODO: weight doesn't necessarily correspond to size.
-                    size_vector = Vector3(.2, .2, .2)
-                    mass = 0.3
+                    size_vector = Vector3(.2, .3, .4)
+                    mass = 0.5
                 Size.MEDIUM:
-                    size_vector = Vector3(.4, .4, .4)
-                    mass = 0.7
+                    size_vector = Vector3(.5, .4, .6)
+                    mass = 0.8
                 Size.LARGE:
-                    size_vector = Vector3(1, 1, 1)
-                    mass = 2
+                    size_vector = Vector3(.8, .7, 1.1)
+                    mass = 1.5
             collision_shape.shape.size = size_vector
             mesh.mesh.size = size_vector
         Shape.TUBE:
@@ -81,17 +81,17 @@ func update_model():
             var radius: float
             match size:
                 Size.SMALL:
-                    height = 0.4
-                    radius = 0.05
-                    mass = 0.2
+                    height = 0.6
+                    radius = 0.08
+                    mass = 0.4
                 Size.MEDIUM:
-                    height = 0.5
+                    height = 1
                     radius = 0.1
-                    mass = 0.5
+                    mass = 0.6
                 Size.LARGE:
-                    height = 1.5
-                    radius = 0.15
-                    mass = 1
+                    height = 1.6
+                    radius = 0.12
+                    mass = .8
             collision_shape.shape.height = height
             collision_shape.shape.radius = radius
             mesh.mesh.height = height
