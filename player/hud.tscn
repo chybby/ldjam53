@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsdesb5wro10h"]
+
+[ext_resource type="Script" path="res://player/hud.gd" id="1_7y742"]
+
+[sub_resource type="Gradient" id="Gradient_lwvfo"]
+offsets = PackedFloat32Array(0, 0.550459, 0.633027, 0.667431)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pfw6s"]
+gradient = SubResource("Gradient_lwvfo")
+width = 32
+height = 32
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="HUD" type="Control"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_7y742")
+
+[node name="Cursor" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.5
+offset_top = -6.5
+offset_right = 6.5
+offset_bottom = 6.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_pfw6s")
+expand_mode = 1
