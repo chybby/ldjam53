@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bk5cj4vt600fw"]
+[gd_scene load_steps=13 format=3 uid="uid://bk5cj4vt600fw"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dkgit"]
 [ext_resource type="Script" path="res://world.gd" id="2_5pf3l"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dxmtgq1vffaeq" path="res://menus/main_menu_screen.tscn" id="4_nqhdg"]
 [ext_resource type="PackedScene" uid="uid://diecf34cipg7k" path="res://player/player.tscn" id="4_qqmf7"]
 [ext_resource type="PackedScene" uid="uid://sdnpsqpox0dm" path="res://package/package.tscn" id="5_252ea"]
+[ext_resource type="PackedScene" uid="uid://dg5ljrugpyfv2" path="res://menus/pause_screen.tscn" id="8_dfw4l"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j6kb4"]
 
@@ -20,9 +21,11 @@ sky = SubResource("Sky_mudlv")
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_owjb4"]
 
 [node name="Main" type="Node"]
+process_mode = 3
 script = ExtResource("1_dkgit")
 
 [node name="World" type="Node3D" parent="."]
+process_mode = 1
 script = ExtResource("2_5pf3l")
 
 [node name="Level" parent="World" instance=ExtResource("3_s1u4l")]
@@ -37,14 +40,23 @@ camera_attributes = SubResource("CameraAttributesPractical_owjb4")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70651, -5.84931)
 
 [node name="GUI" type="Control" parent="."]
-visible = false
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("3_5trqk")
 
 [node name="MainMenuScreen" parent="GUI" instance=ExtResource("4_nqhdg")]
+visible = false
 layout_mode = 1
+
+[node name="PauseScreen" parent="GUI" instance=ExtResource("8_dfw4l")]
+visible = false
+layout_mode = 1
+
+[connection signal="unpaused" from="GUI" to="." method="_on_gui_unpaused"]
+[connection signal="closed" from="GUI/PauseScreen" to="GUI" method="_on_pause_screen_closed"]

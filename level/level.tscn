@@ -83,6 +83,6 @@ skeleton = NodePath("../..")
 shape = SubResource("WorldBoundaryShape3D_t4nq7")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.96277, 0)
 shadow_enabled = true
 omni_range = 20.361

@@ -1,12 +1,15 @@
 extends Node
 
+@onready var gui := $GUI
+@onready var world := $World
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
     Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+func _input(event):
+    if event.is_action_pressed("pause"):
+        gui.show_pause_screen()
+        get_tree().paused = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-    if Input.is_action_just_pressed("pause"):
-        Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+func _on_gui_unpaused():
+    get_tree().paused = false

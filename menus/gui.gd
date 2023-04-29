@@ -1,11 +1,22 @@
 extends Control
 
+signal unpaused
 
-# Called when the node enters the scene tree for the first time.
+@onready var main_menu_screen := $MainMenuScreen
+@onready var pause_screen := $PauseScreen
+
 func _ready():
-    pass # Replace with function body.
+    main_menu_screen.set_process_input(false)
+    pause_screen.set_process_input(false)
 
+func show_pause_screen():
+    if not pause_screen.visible:
+        pause_screen.visible = true
+        pause_screen.set_process_input(true)
+        Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-    pass
+func _on_pause_screen_closed():
+    pause_screen.visible = false
+    pause_screen.set_process_input(false)
+    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+    emit_signal("unpaused")
