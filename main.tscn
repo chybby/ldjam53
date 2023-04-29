@@ -1,0 +1,50 @@
+[gd_scene load_steps=12 format=3 uid="uid://bk5cj4vt600fw"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_dkgit"]
+[ext_resource type="Script" path="res://world.gd" id="2_5pf3l"]
+[ext_resource type="Script" path="res://menus/gui.gd" id="3_5trqk"]
+[ext_resource type="PackedScene" uid="uid://bewap3blcn6p6" path="res://level/level.tscn" id="3_s1u4l"]
+[ext_resource type="PackedScene" uid="uid://dxmtgq1vffaeq" path="res://menus/main_menu_screen.tscn" id="4_nqhdg"]
+[ext_resource type="PackedScene" uid="uid://diecf34cipg7k" path="res://player/player.tscn" id="4_qqmf7"]
+[ext_resource type="PackedScene" uid="uid://sdnpsqpox0dm" path="res://package/package.tscn" id="5_252ea"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j6kb4"]
+
+[sub_resource type="Sky" id="Sky_mudlv"]
+sky_material = SubResource("ProceduralSkyMaterial_j6kb4")
+
+[sub_resource type="Environment" id="Environment_lciql"]
+background_mode = 2
+sky = SubResource("Sky_mudlv")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_owjb4"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_dkgit")
+
+[node name="World" type="Node3D" parent="."]
+script = ExtResource("2_5pf3l")
+
+[node name="Level" parent="World" instance=ExtResource("3_s1u4l")]
+
+[node name="Player" parent="World" instance=ExtResource("4_qqmf7")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
+environment = SubResource("Environment_lciql")
+camera_attributes = SubResource("CameraAttributesPractical_owjb4")
+
+[node name="Package" parent="World" instance=ExtResource("5_252ea")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.70651, -5.84931)
+
+[node name="GUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_5trqk")
+
+[node name="MainMenuScreen" parent="GUI" instance=ExtResource("4_nqhdg")]
+layout_mode = 1
