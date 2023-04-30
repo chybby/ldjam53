@@ -7,12 +7,12 @@ const Package = preload("res://package/package.gd")
 const CustomerScene = preload("res://customer/customer.tscn")
 
 @onready var level := $Level
-@onready var customer_entry_position := $Level/CustomerEntryPoint
 @onready var player := $Player
 @onready var scanner := $Scanner
+@onready var delivery_zone := $DeliveryZone
 @onready var package_spawn_timer := $PackageSpawnTimer
 
-var packages_left_to_spawn = 2
+var packages_left_to_spawn = 20
 var customers_left_to_spawn = packages_left_to_spawn
 # Packages that don't have a customer waiting for them yet.
 var unclaimed_packages: Array[Package] = []
@@ -21,7 +21,7 @@ var undelivered_packages: Array[Package] = []
 
 func start_day(day: int):
     print('Starting day %d' % day)
-    packages_left_to_spawn = 2
+    packages_left_to_spawn = 20
     customers_left_to_spawn = packages_left_to_spawn
     unclaimed_packages = []
     undelivered_packages = []
@@ -62,14 +62,14 @@ func _on_delivery_zone_package_delivered(package: Package):
         # End the day.
         day_ended.emit()
 
-
 func _on_customer_spawn_timer_timeout():
     if packages_left_to_spawn > 0 or customers_left_to_spawn == 0:
         return
 
     var customer := CustomerScene.instantiate()
-    customer.position = customer_entry_position.position
+    customer.setup(delivery_zone.position, level.get_customer_exit_position())
+    print(level.get_customer_spawn_position())
+    customer.position = level.get_customer_spawn_position()
     customer.needed_package = unclaimed_packages.pop_back()
     customers_left_to_spawn -= 1
-
     add_child(customer)

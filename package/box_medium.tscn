@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://iw5chajcoacq"]
+
+[ext_resource type="PackedScene" uid="uid://dkt7qltl2vs5t" path="res://package/models/BoxMedium.glb" id="1_52tg4"]
+
+[node name="BoxMedium" instance=ExtResource("1_52tg4")]
+
+[node name="BoxPackageMedium" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
