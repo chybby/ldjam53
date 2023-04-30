@@ -28,6 +28,7 @@ func start_day(day: int):
     player.reset()
     player.position = level.get_player_spawn_position()
     package_spawn_timer.start()
+    level.turn_on_light()
 
     for package in get_tree().get_nodes_in_group('packages'):
         package.free()
@@ -46,6 +47,7 @@ func _on_package_spawn_timer_timeout():
     packages_left_to_spawn -= 1
     if packages_left_to_spawn == 0:
         package_spawn_timer.stop()
+        level.turn_off_light()
 
 func _on_delivery_zone_package_delivered(package: Package):
     package.remove_from_group('pickup')

@@ -4,7 +4,8 @@ extends CharacterBody3D
 @export var sprint_speed := 6.0
 @export var jump_velocity := 4.5
 @export var mouse_sensitivity := 0.002
-@export var held_item_strength := 150
+@export var held_item_move_strength := 150
+@export var held_item_rotate_strength := 10
 
 @onready var camera := $Camera
 @onready var interact_ray := $Camera/InteractRay
@@ -20,9 +21,14 @@ var Package = preload("res://package/package.gd")
 
 func _unhandled_input(event):
     if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-        rotate_y(-event.relative.x * mouse_sensitivity)
-        camera.rotate_x(-event.relative.y * mouse_sensitivity)
-        camera.rotation.x = clamp(camera.rotation.x, -1.2, 1.2)
+        if Input.is_action_pressed("rotate_held_item") and held_object != null:
+            var torque := Vector3(event.relative.y, event.relative.x, 0) * held_item_rotate_strength * mouse_sensitivity
+            torque *= basis.transposed()
+            held_object.apply_torque(torque)
+        else:
+            rotate_y(-event.relative.x * mouse_sensitivity)
+            camera.rotate_x(-event.relative.y * mouse_sensitivity)
+            camera.rotation.x = clamp(camera.rotation.x, -1.2, 1.2)
     elif event.is_action_pressed('interact'):
         if hovered_object and is_instance_valid(hovered_object):
             if hovered_object.has_method('interact'):
@@ -30,17 +36,26 @@ func _unhandled_input(event):
             if hovered_object.is_in_group('pickup'):
                 if held_object == null:
                     held_object = hovered_object
+                    held_item_marker.global_position = held_object.global_position
                     held_object.linear_damp = 20
                     held_object.angular_damp = 10
+                    held_object.set_inertia(Vector3.ONE * 0.01)
                     print('Holding %s' % held_object)
-                    hovered_object = null
+                    #hovered_object = null
     elif event.is_action_released('interact'):
         drop_object()
+    elif event.is_action_pressed('move_held_item_away') and held_object != null:
+        if held_item_marker.position.length() < 2.5:
+            held_item_marker.position += held_item_marker.position.normalized() * 0.1
+    elif event.is_action_pressed('move_held_item_towards') and held_object != null:
+        if held_item_marker.position.length() > 1.5:
+            held_item_marker.position -= held_item_marker.position.normalized() * 0.1
 
 func drop_object():
     if held_object:
         held_object.linear_damp = 0
         held_object.angular_damp = 0
+        held_object.set_inertia(Vector3.ZERO)
         print('Dropped %s' % held_object)
         held_object = null
 
@@ -83,7 +98,7 @@ func _physics_process(delta):
     # Drag held object.
     if held_object:
         var force_direction: Vector3 = held_item_marker.global_position - held_object.global_position
-        held_object.apply_central_force(force_direction * held_item_strength)
+        held_object.apply_central_force(force_direction * held_item_move_strength)
 
 func reset():
     rotation = Vector3.ZERO
