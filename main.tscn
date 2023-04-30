@@ -51,6 +51,7 @@ process_mode = 1
 script = ExtResource("2_5pf3l")
 
 [node name="Level" parent="World" instance=ExtResource("3_s1u4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000473022, -0.00826412, 4.95911e-05)
 
 [node name="Player" parent="World" instance=ExtResource("4_qqmf7")]
 

@@ -2,8 +2,9 @@ extends CharacterBody3D
 
 @export var speed = 50
 
-@onready var serving_point = get_node("../Level/CustomerServingPoint")
+@onready var serving_point = get_node("/root/Main/World/DeliveryZone")
 @onready var exit_area = get_node("../Level/CustomerExitArea")
+@onready var target_rot = Node3D.new()
 
 var is_satisfied = false
 
@@ -20,6 +21,8 @@ func _physics_process(delta):
         p = exit_area.position
     var dir = p - position
     if dir.length() < 1:
+        # TODO: here they should show their ID card and be ready to receive a package
+        # maybe better to code elsewhere in an area interaction
         velocity.x = move_toward(velocity.x, 0, speed)
         velocity.z = move_toward(velocity.z, 0, speed)
     else:
@@ -27,8 +30,9 @@ func _physics_process(delta):
         velocity.x = dir.x * speed * delta
         velocity.z = dir.z * speed * delta
 
-    # TODO: this is buggy (doesn't even rotate to the serving point fully) and janky at spawn
-    rotation.y = position.signed_angle_to(p, Vector3.UP) - PI
+    # TODO: I would LOVE to make them smoothly rotate, especially when satisfied
+    # and switching to going to the exit, but I'm too dumb for that right now
+    look_at(p, Vector3.UP)
 
     move_and_slide()
 
