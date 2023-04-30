@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://8cotxj0okskq"]
+[gd_scene load_steps=16 format=3 uid="uid://8cotxj0okskq"]
 
 [ext_resource type="Script" path="res://delivery_zone/delivery_zone.gd" id="1_g2s3x"]
 
@@ -86,6 +86,9 @@ _data = {
 "incorrect": SubResource("Animation_esy4x")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hxrih"]
+size = Vector3(2.85264, 1, 5.32611)
+
 [node name="DeliveryZone" type="Node3D"]
 script = ExtResource("1_g2s3x")
 
@@ -134,5 +137,18 @@ libraries = {
 "": SubResource("AnimationLibrary_yfpew")
 }
 
+[node name="WaitingArea" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WaitingArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90485, 0, -0.116076)
+shape = SubResource("BoxShape3D_hxrih")
+
+[node name="IDSpawnPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.151264, 1.05762)
+
 [connection signal="body_entered" from="DeliveryArea" to="." method="_on_delivery_area_body_entered"]
 [connection signal="body_exited" from="DeliveryArea" to="." method="_on_delivery_area_body_exited"]
+[connection signal="body_entered" from="WaitingArea" to="." method="_on_waiting_area_body_entered"]
+[connection signal="body_exited" from="WaitingArea" to="." method="_on_waiting_area_body_exited"]

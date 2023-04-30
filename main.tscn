@@ -51,7 +51,7 @@ process_mode = 1
 script = ExtResource("2_5pf3l")
 
 [node name="Level" parent="World" instance=ExtResource("3_s1u4l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000473022, -0.00826412, 4.95911e-05)
+transform = Transform3D(1.00953, -2.79434e-05, -0.000339687, 2.80604e-05, 1.00953, 0.000426816, 0.000339677, -0.000426824, 1.00953, -0.000473022, -0.00826412, 4.95911e-05)
 
 [node name="Player" parent="World" instance=ExtResource("4_qqmf7")]
 
@@ -63,7 +63,7 @@ camera_attributes = SubResource("CameraAttributesPractical_owjb4")
 transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -0.154526, 0, 2.90315)
 
 [node name="DeliveryZone" parent="World" instance=ExtResource("6_wbj6h")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.49849, 1.1794, 7.58953)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5.49849, 1.1794, 7.58953)
 
 [node name="PackageSpawnTimer" type="Timer" parent="World"]
 wait_time = 4.0
@@ -100,8 +100,7 @@ shape = 0
 size = 2
 
 [node name="CustomerSpawnTimer" type="Timer" parent="World"]
-wait_time = 2.0
-one_shot = true
+wait_time = 5.0
 autostart = true
 
 [node name="GUI" type="Control" parent="."]

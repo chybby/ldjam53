@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bimcs2fq8vdms"]
+
+[ext_resource type="Script" path="res://customer/id_ui.gd" id="1_bcju4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3tqt0"]
+font_size = 32
+
+[node name="IDUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_bcju4")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 200.0
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+scale = Vector2(0.992912, 1)
+text = "Joshua Elliott
+123 Fake St
+SYDNEY NSW 2000"
+label_settings = SubResource("LabelSettings_3tqt0")

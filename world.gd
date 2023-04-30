@@ -13,6 +13,7 @@ const CustomerScene = preload("res://customer/customer.tscn")
 @onready var package_spawn_timer := $PackageSpawnTimer
 
 var packages_left_to_spawn = 2
+var customers_left_to_spawn = packages_left_to_spawn
 # Packages that don't have a customer waiting for them yet.
 var unclaimed_packages: Array[Package] = []
 # Packages that haven't been given to the right customer yet.
@@ -21,6 +22,7 @@ var undelivered_packages: Array[Package] = []
 func start_day(day: int):
     print('Starting day %d' % day)
     packages_left_to_spawn = 2
+    customers_left_to_spawn = packages_left_to_spawn
     unclaimed_packages = []
     undelivered_packages = []
     player.reset()
@@ -62,6 +64,12 @@ func _on_delivery_zone_package_delivered(package: Package):
 
 
 func _on_customer_spawn_timer_timeout():
+    if packages_left_to_spawn > 0 or customers_left_to_spawn == 0:
+        return
+
     var customer := CustomerScene.instantiate()
     customer.position = customer_entry_position.position
+    customer.needed_package = unclaimed_packages.pop_back()
+    customers_left_to_spawn -= 1
+
     add_child(customer)
