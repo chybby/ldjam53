@@ -3,11 +3,11 @@
 [ext_resource type="Script" path="res://scanner/scanner_ui.gd" id="1_1pr4t"]
 
 [node name="ScannerUI" type="Control"]
-custom_minimum_size = Vector2(512, 512)
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 512.0
-offset_bottom = 512.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 script = ExtResource("1_1pr4t")
 
 [node name="Panel" type="Panel" parent="."]
@@ -18,32 +18,52 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ScanSomethingLabel" type="Label" parent="Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -70.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 200
+text = "Scan something"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="NameLabel" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.074
 anchor_right = 1.0
-anchor_bottom = 0.234
-offset_top = 0.112
-offset_bottom = 0.191994
+anchor_bottom = 0.432
+offset_bottom = 0.0639954
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 58
-text = "Scan something"
+theme_override_constants/line_spacing = -40
+theme_override_font_sizes/font_size = 145
+text = "Jadam Joshuasonsonsonson"
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="AddressLabel" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.074
+anchor_top = 0.406
 anchor_right = 1.0
-anchor_bottom = 0.234
-offset_top = 219.112
-offset_bottom = 219.192
+anchor_bottom = 0.994
+offset_top = -0.0880127
+offset_bottom = -0.112
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 58
-text = "Scan something"
+theme_override_constants/line_spacing = -30
+theme_override_font_sizes/font_size = 113
+text = "123 Wallaby Way Long Street Name
+Port Moresby State University NSW 1900 "
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 2

@@ -18,7 +18,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_fyvsl"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_0ya33"]
 resource_name = "TubeMedium_Cylinder002"
 _surfaces = [{
 "aabb": AABB(-0.0914388, -0.486069, -0.0914388, 0.182878, 0.972137, 0.182878),
@@ -47,4 +47,4 @@ shape = 1
 shape = ExtResource("2_3u2a5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("ArrayMesh_fyvsl")
+mesh = SubResource("ArrayMesh_0ya33")
