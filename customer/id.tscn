@@ -6,7 +6,7 @@
 viewport_path = NodePath("SubViewport")
 
 [node name="ID" type="Node3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.116671, 0, 0, 0, -0.00050313, 0.992528, 0, -0.067828, -0.00736231, 0.0020901, 0.0272079, -0.00700639)

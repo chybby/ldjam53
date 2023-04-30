@@ -7,13 +7,14 @@
 size = Vector3(2.01131, 1.98906, 0.136174)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ea4jk"]
-size = Vector3(1.92868, 1.99498, 0.434641)
+size = Vector3(1.92868, 1.99498, 1.6021)
 
 [node name="customer" type="CharacterBody3D"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0.00682569, -0.00434351, -0.00145626)
 collision_layer = 8
 collision_mask = 55
 script = ExtResource("1_q22ik")
+follow_distance = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_4kcen")
@@ -32,4 +33,5 @@ texture_filter = 0
 texture = ExtResource("1_xdkae")
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

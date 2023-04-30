@@ -5,15 +5,20 @@ signal day_ended
 const PackageScene = preload("res://package/package.tscn")
 const Package = preload("res://package/package.gd")
 const CustomerScene = preload("res://customer/customer.tscn")
+const IDScene = preload("res://customer/id.tscn")
 
 @onready var level := $Level
 @onready var player := $Player
 @onready var scanner := $Scanner
 @onready var delivery_zone := $DeliveryZone
+@onready var id_spawn_point := $DeliveryZone/IDSpawnPoint
 @onready var package_spawn_timer := $PackageSpawnTimer
 
-var packages_left_to_spawn = 20
-var customers_left_to_spawn = packages_left_to_spawn
+var id_queue = []
+var customer_queue = []
+
+var packages_left_to_spawn: int
+var customers_left_to_spawn: int
 # Packages that don't have a customer waiting for them yet.
 var unclaimed_packages: Array[Package] = []
 # Packages that haven't been given to the right customer yet.
@@ -21,7 +26,7 @@ var undelivered_packages: Array[Package] = []
 
 func start_day(day: int):
     print('Starting day %d' % day)
-    packages_left_to_spawn = 20
+    packages_left_to_spawn = 2
     customers_left_to_spawn = packages_left_to_spawn
     unclaimed_packages = []
     undelivered_packages = []
@@ -69,9 +74,26 @@ func _on_customer_spawn_timer_timeout():
         return
 
     var customer := CustomerScene.instantiate()
-    customer.setup(delivery_zone.position, level.get_customer_exit_position())
-    print(level.get_customer_spawn_position())
     customer.position = level.get_customer_spawn_position()
     customer.needed_package = unclaimed_packages.pop_back()
+    var p = delivery_zone
+    if not customer_queue.is_empty():
+        p = customer_queue[-1]
+    customer_queue.push_back(customer)
+    customer.setup(p, level.get_customer_exit_position())
+    var customer_sprite = customer.get_node("Character")
+    customer_sprite.modulate = Color(1,1,1,0)
+
+    var id := IDScene.instantiate()
+    id.position = id_spawn_point.global_position
+    id.visible = false
+    add_child(id)
+    var id_ui := id.get_node("SubViewport/IDUI")
+    id_ui.set_label(customer.needed_package.first_name + " " + customer.needed_package.last_name
+    + "\n" + customer.needed_package.address._to_string())
+    id_queue.push_back(id)
+
     customers_left_to_spawn -= 1
     add_child(customer)
+    var tween = get_tree().create_tween()
+    tween.tween_property(customer_sprite, "modulate", Color(1,1,1,1), 1)
