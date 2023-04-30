@@ -9,6 +9,8 @@ signal mouse_sensitivity_changed(mouse_sensitivity: float)
 @onready var pause_screen := $PauseScreen
 @onready var hud := $HUD
 
+enum Cursor {DOT, OPEN_HAND, CLOSED_HAND}
+
 func _ready():
     main_menu_screen.set_process_input(true)
     pause_screen.set_process_input(false)
@@ -20,6 +22,9 @@ func show_pause_screen():
         pause_screen.set_process_input(true)
         Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
         hud.visible = false
+
+func set_cursor(cursor: Cursor):
+    hud.set_cursor(cursor)
 
 func _on_pause_screen_closed():
     pause_screen.visible = false

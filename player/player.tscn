@@ -14,6 +14,7 @@ shape = SubResource("CapsuleShape3D_jakkr")
 
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -0.2)
+current = true
 
 [node name="InteractRay" type="RayCast3D" parent="Camera"]
 target_position = Vector3(0, 0, -3)

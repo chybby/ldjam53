@@ -1,5 +1,7 @@
 extends Node
 
+const GUI = preload("res://menus/gui.gd")
+
 @onready var gui := $GUI
 @onready var world := $World
 @onready var player := $World/Player
@@ -24,6 +26,14 @@ func _input(event):
         get_tree().paused = true
     elif event.is_action_pressed("skip_day"):
         _on_world_day_ended()
+
+func _process(delta):
+    if player.held_object != null:
+        gui.set_cursor(GUI.Cursor.CLOSED_HAND)
+    elif player.hovered_object != null:
+        gui.set_cursor(GUI.Cursor.OPEN_HAND)
+    else:
+        gui.set_cursor(GUI.Cursor.DOT)
 
 func _on_gui_unpaused():
     get_tree().paused = false

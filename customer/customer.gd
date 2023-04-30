@@ -22,7 +22,7 @@ func _physics_process(delta):
     if dir.length() < 1:
         velocity.x = move_toward(velocity.x, 0, speed)
         velocity.z = move_toward(velocity.z, 0, speed)
-    else: 
+    else:
         dir = dir.normalized()
         velocity.x = dir.x * speed * delta
         velocity.z = dir.z * speed * delta
@@ -37,7 +37,7 @@ func _on_area_3d_body_entered(body):
     if body.collision_layer == 1 << 1:
         print("satisfied")
         is_satisfied = true
-    
+
 func _on_area_3d_area_entered(area):
     print(area.collision_layer)
     if area.collision_layer == 1 << 4 and is_satisfied:

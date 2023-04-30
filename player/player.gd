@@ -45,6 +45,9 @@ func drop_object():
         held_object = null
 
 func _process(delta):
+    if not is_instance_valid(hovered_object):
+        hovered_object = null
+
     if interact_ray.get_collider() != hovered_object:
         if hovered_object and is_instance_valid(hovered_object) and hovered_object.has_method('hover'):
             hovered_object.hover(false)
