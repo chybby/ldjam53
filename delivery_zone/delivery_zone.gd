@@ -23,6 +23,8 @@ func update_screen(ignore_body):
     if bodies.size() == 1 and bodies[0] != ignore_body:
         var package: Package = bodies[0]
 
+        if customer_queue.is_empty():
+            return
         if package.name == customer_queue[0].needed_package.name:
             animation_player.play("correct")
             customer_queue[0].is_satisfied = true

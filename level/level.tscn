@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dycckerh6k1ca"]
+[gd_scene load_steps=6 format=3 uid="uid://bewap3blcn6p6"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_8ll5v"]
 [ext_resource type="PackedScene" uid="uid://bf5v5fhrtivwr" path="res://level/level.glb" id="1_kk78k"]
-[ext_resource type="PackedScene" uid="uid://csv2s18dbgn2b" path="res://level/shelves.tscn" id="2_vylrv"]
+[ext_resource type="PackedScene" uid="uid://gkwssng0r3uv" path="res://level/shelves.tscn" id="2_vylrv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l8tvu"]
 
@@ -40,7 +40,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1655, 4.19751, 11.6378)
 [node name="PlayerSpawnPoint" type="Marker3D" parent="." index="10"]
 
 [node name="CustomerSpawnPoint" type="Marker3D" parent="." index="11"]
-transform = Transform3D(0.996294, -0.0860082, 1.74846e-07, 0.0860082, 0.996294, 0, -1.74198e-07, 1.50382e-08, 1, 9.49657, 0.115169, -6.99918)
+transform = Transform3D(0.996294, -0.0860082, 1.74846e-07, 0.0860082, 0.996294, 0, -1.74198e-07, 1.50382e-08, 1, 9.49657, 2.47111, -5.91984)
 
 [node name="CustomerExitArea" type="Area3D" parent="." index="12"]
 transform = Transform3D(0.999791, 0.0204014, 1.73855e-07, -0.0204014, 0.999791, -1.85889e-08, -1.74198e-07, 1.50382e-08, 1, -1.88466, 0.124595, -12.1548)
