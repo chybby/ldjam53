@@ -146,7 +146,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90485, 0, -0.116076)
 shape = SubResource("BoxShape3D_hxrih")
 
 [node name="IDSpawnPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.151264, 1.05762)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.228587, 0.151264, 1.05762)
 
 [connection signal="body_entered" from="DeliveryArea" to="." method="_on_delivery_area_body_entered"]
 [connection signal="body_exited" from="DeliveryArea" to="." method="_on_delivery_area_body_exited"]

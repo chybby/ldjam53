@@ -3,11 +3,13 @@
 [ext_resource type="Script" path="res://customer/customer.gd" id="1_q22ik"]
 [ext_resource type="Texture2D" uid="uid://b3sjqpkbeinhu" path="res://customer/customer.png" id="1_xdkae"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_4kcen"]
-size = Vector3(2.01131, 1.98906, 0.136174)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lxroy"]
+radius = 0.309737
+height = 1.84418
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ea4jk"]
-size = Vector3(1.92868, 1.99498, 0.434641)
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xkeib"]
+radius = 0.484001
+height = 1.84302
 
 [node name="customer" type="CharacterBody3D"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0.00682569, -0.00434351, -0.00145626)
@@ -16,14 +18,14 @@ collision_mask = 55
 script = ExtResource("1_q22ik")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_4kcen")
+shape = SubResource("CapsuleShape3D_lxroy")
 
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 8
 collision_mask = 63
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-shape = SubResource("BoxShape3D_ea4jk")
+shape = SubResource("CapsuleShape3D_xkeib")
 
 [node name="Character" type="Sprite3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)

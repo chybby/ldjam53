@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bewap3blcn6p6"]
+[gd_scene load_steps=13 format=3 uid="uid://dycckerh6k1ca"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_8ll5v"]
 [ext_resource type="PackedScene" uid="uid://bf5v5fhrtivwr" path="res://level/level.glb" id="1_kk78k"]
-[ext_resource type="PackedScene" uid="uid://gkwssng0r3uv" path="res://level/shelves.tscn" id="2_vylrv"]
+[ext_resource type="PackedScene" uid="uid://csv2s18dbgn2b" path="res://level/shelves.tscn" id="2_vylrv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l8tvu"]
 

@@ -52,22 +52,6 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_v5lxb"]
-resource_name = "scan_light"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ScanLight:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="Animation" id="Animation_ac365"]
 resource_name = "scan_laser"
 loop_mode = 1
@@ -93,6 +77,22 @@ tracks/1/keys = {
 "handle_modes": PackedInt32Array(1, 3, 1, 3, 1),
 "points": PackedFloat32Array(0, 0, 0, 0, 0, -0.329867, -0.206405, -0.000350446, 0.206405, 0.000350446, 0, 0, 0, 0, 0, 0.329867, -0.17585, 0.000947058, 0.17585, -0.000947058, 0, 0, 0, 0, 0),
 "times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1)
+}
+
+[sub_resource type="Animation" id="Animation_v5lxb"]
+resource_name = "scan_light"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ScanLight:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_25b3o"]
