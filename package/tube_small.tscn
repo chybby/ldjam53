@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpoht6w62af1q"]
+
+[ext_resource type="PackedScene" uid="uid://c11t66ow2omof" path="res://package/models/TubeSmall.glb" id="1_0dsho"]
+
+[node name="TubeSmall" instance=ExtResource("1_0dsho")]
+
+[node name="TubePackageSmall" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="TubePackageSmall" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.05636e-05, 0)

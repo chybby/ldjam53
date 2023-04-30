@@ -1,9 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bk5cj4vt600fw"]
+[gd_scene load_steps=16 format=3 uid="uid://b3rktlhes8d8y"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dkgit"]
 [ext_resource type="Script" path="res://world.gd" id="2_5pf3l"]
 [ext_resource type="Script" path="res://menus/gui.gd" id="3_5trqk"]
-[ext_resource type="PackedScene" uid="uid://bewap3blcn6p6" path="res://level/level.tscn" id="3_s1u4l"]
+[ext_resource type="PackedScene" uid="uid://dycckerh6k1ca" path="res://level/level.tscn" id="3_s1u4l"]
 [ext_resource type="PackedScene" uid="uid://dxmtgq1vffaeq" path="res://menus/main_menu_screen.tscn" id="4_nqhdg"]
 [ext_resource type="PackedScene" uid="uid://diecf34cipg7k" path="res://player/player.tscn" id="4_qqmf7"]
 [ext_resource type="PackedScene" uid="uid://sdnpsqpox0dm" path="res://package/package.tscn" id="6_okuef"]
@@ -51,7 +51,7 @@ process_mode = 1
 script = ExtResource("2_5pf3l")
 
 [node name="Level" parent="World" instance=ExtResource("3_s1u4l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000473022, -0.00826412, 4.95911e-05)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 2.5127)
 
 [node name="Player" parent="World" instance=ExtResource("4_qqmf7")]
 
@@ -60,25 +60,25 @@ environment = SubResource("Environment_lciql")
 camera_attributes = SubResource("CameraAttributesPractical_owjb4")
 
 [node name="Scanner" parent="World" instance=ExtResource("6_qxux1")]
-transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -0.154526, 0, 2.90315)
+transform = Transform3D(-2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -0.154526, 0, 5.78748)
 
 [node name="DeliveryZone" parent="World" instance=ExtResource("6_wbj6h")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 5.49849, 1.1794, 7.58953)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.47557, 1.04643, 9.74864)
 
 [node name="PackageSpawnTimer" type="Timer" parent="World"]
-wait_time = 4.0
+wait_time = 0.991
 autostart = true
 
 [node name="Package" parent="World" instance=ExtResource("6_okuef")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 7.60952)
+transform = Transform3D(0.946891, 0, 0.321555, 0, 1, 0, -0.321555, 0, 0.946891, -5.92979, 1.62644, 8.89482)
 mass = 0.4
 size = 0
 
 [node name="Package2" parent="World" instance=ExtResource("6_okuef")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 7.97484)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 9.32455)
 
 [node name="Package3" parent="World" instance=ExtResource("6_okuef")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 8.47319)
+transform = Transform3D(-0.99185, 0, -0.127411, 0, 1, 0, 0.127411, 0, -0.99185, -5.92979, 1.62644, 9.77312)
 mass = 0.8
 size = 2
 
@@ -89,15 +89,87 @@ shape = 0
 size = 0
 
 [node name="Package5" parent="World" instance=ExtResource("6_okuef")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 10.9024)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 11.2526)
 mass = 0.8
 shape = 0
 
 [node name="Package6" parent="World" instance=ExtResource("6_okuef")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 11.9294)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.92979, 1.62644, 12.3884)
 mass = 1.5
 shape = 0
 size = 2
+
+[node name="Package7" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(0.946891, 0, 0.321555, 0, 1, 0, -0.321555, 0, 0.946891, -3.82006, 1.62644, 8.89482)
+mass = 0.4
+size = 0
+company = 1
+
+[node name="Package8" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.82006, 1.62644, 9.32455)
+company = 1
+
+[node name="Package9" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(-0.99185, 0, -0.127411, 0, 1, 0, 0.127411, 0, -0.99185, -3.82006, 1.62644, 9.77312)
+mass = 0.8
+size = 2
+company = 1
+
+[node name="Package10" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.82006, 1.62644, 10.3612)
+mass = 0.5
+shape = 0
+size = 0
+company = 1
+
+[node name="Package11" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.82006, 1.62644, 11.2526)
+mass = 0.8
+shape = 0
+company = 1
+
+[node name="Package12" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.82006, 1.62644, 12.3884)
+mass = 1.5
+shape = 0
+size = 2
+company = 1
+
+[node name="Package13" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(0.946891, 0, 0.321555, 0, 1, 0, -0.321555, 0, 0.946891, -1.83726, 1.62644, 8.89482)
+mass = 0.4
+size = 0
+company = 2
+
+[node name="Package14" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83726, 1.62644, 9.32455)
+company = 2
+
+[node name="Package15" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(-0.99185, 0, -0.127411, 0, 1, 0, 0.127411, 0, -0.99185, -1.83726, 1.62644, 9.77312)
+mass = 0.8
+size = 2
+company = 2
+
+[node name="Package16" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83726, 1.62644, 10.3612)
+mass = 0.5
+shape = 0
+size = 0
+company = 2
+
+[node name="Package17" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83726, 1.62644, 11.2526)
+mass = 0.8
+shape = 0
+company = 2
+
+[node name="Package18" parent="World" instance=ExtResource("6_okuef")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.83726, 1.62644, 12.3884)
+mass = 1.5
+shape = 0
+size = 2
+company = 2
 
 [node name="CustomerSpawnTimer" type="Timer" parent="World"]
 wait_time = 2.0

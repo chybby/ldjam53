@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bli53gsu2mr4s"]
+
+[ext_resource type="Texture2D" uid="uid://byo6p544i31d7" path="res://package/models/tube_ship_for_less.png" id="1_83lre"]
+
+[resource]
+resource_name = "TubePackagePersonalDeliveryConglomerate"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_83lre")
+texture_filter = 0

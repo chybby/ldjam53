@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dspm3tbxb0wqd"]
+
+[ext_resource type="Texture2D" uid="uid://ddp0rkuuuy3go" path="res://package/models/box_personal_delivery_conglomerate.png" id="1_6hpxp"]
+
+[resource]
+resource_name = "BoxPackageShipForLess"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_6hpxp")
+texture_filter = 0

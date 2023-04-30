@@ -5,6 +5,27 @@ enum Shape {BOX, TUBE}
 enum Size {SMALL, MEDIUM, LARGE}
 enum Company {PERSONAL_DELIVERY_CONGLOMERATE, LOGISTICS_CORP, SHIP_FOR_LESS}
 
+const box_large_mesh = preload("res://package/meshes/box_large_mesh.tres")
+const box_medium_mesh = preload("res://package/meshes/box_medium_mesh.tres")
+const box_small_mesh = preload("res://package/meshes/box_small_mesh.tres")
+const tube_large_mesh = preload("res://package/meshes/tube_large_mesh.tres")
+const tube_medium_mesh = preload("res://package/meshes/tube_medium_mesh.tres")
+const tube_small_mesh = preload("res://package/meshes/tube_small_mesh.tres")
+
+const box_large_shape = preload("res://package/shapes/box_large_shape.tres")
+const box_medium_shape = preload("res://package/shapes/box_medium_shape.tres")
+const box_small_shape = preload("res://package/shapes/box_small_shape.tres")
+const tube_large_shape = preload("res://package/shapes/tube_large_shape.tres")
+const tube_medium_shape = preload("res://package/shapes/tube_medium_shape.tres")
+const tube_small_shape = preload("res://package/shapes/tube_small_shape.tres")
+
+const box_personal_delivery_conglomerate_material = preload("res://package/materials/box_personal_delivery_conglomerate.tres")
+const box_logistics_corp_material = preload("res://package/materials/box_logistics_corp.tres")
+const box_ship_for_less_material = preload("res://package/materials/box_ship_for_less.tres")
+const tube_personal_delivery_conglomerate_material = preload("res://package/materials/tube_personal_delivery_conglomerate.tres")
+const tube_logistics_corp_material = preload("res://package/materials/tube_logistics_corp.tres")
+const tube_ship_for_less_material = preload("res://package/materials/tube_ship_for_less.tres")
+
 class Address:
     var street_number: String
     var street: String
@@ -56,57 +77,50 @@ func update_model():
 
     match shape:
         Shape.BOX:
-            collision_shape.shape = BoxShape3D.new()
-            mesh.mesh = BoxMesh.new()
-
-            var size_vector : Vector3
             match size:
                 Size.SMALL:
                     # TODO: weight doesn't necessarily correspond to size.
-                    size_vector = Vector3(.2, .3, .4)
+                    collision_shape.shape = box_small_shape
+                    mesh.mesh = box_small_mesh.duplicate()
                     mass = 0.5
                 Size.MEDIUM:
-                    size_vector = Vector3(.5, .4, .6)
+                    collision_shape.shape = box_medium_shape
+                    mesh.mesh = box_medium_mesh.duplicate()
                     mass = 0.8
                 Size.LARGE:
-                    size_vector = Vector3(.8, .7, 1.1)
+                    collision_shape.shape = box_large_shape
+                    mesh.mesh = box_large_mesh.duplicate()
                     mass = 1.5
-            collision_shape.shape.size = size_vector
-            mesh.mesh.size = size_vector
-        Shape.TUBE:
-            collision_shape.shape = CylinderShape3D.new()
-            mesh.mesh = CylinderMesh.new()
 
-            var height : float
-            var radius: float
+            match company:
+                Company.PERSONAL_DELIVERY_CONGLOMERATE:
+                    mesh.mesh.surface_set_material(0, box_personal_delivery_conglomerate_material)
+                Company.LOGISTICS_CORP:
+                    mesh.mesh.surface_set_material(0, box_logistics_corp_material)
+                Company.SHIP_FOR_LESS:
+                    mesh.mesh.surface_set_material(0, box_ship_for_less_material)
+        Shape.TUBE:
             match size:
                 Size.SMALL:
-                    height = 0.6
-                    radius = 0.08
+                    collision_shape.shape = tube_small_shape
+                    mesh.mesh = tube_small_mesh.duplicate()
                     mass = 0.4
                 Size.MEDIUM:
-                    height = 1
-                    radius = 0.1
+                    collision_shape.shape = tube_medium_shape
+                    mesh.mesh = tube_medium_mesh.duplicate()
                     mass = 0.6
                 Size.LARGE:
-                    height = 1.6
-                    radius = 0.12
+                    collision_shape.shape = tube_large_shape
+                    mesh.mesh = tube_large_mesh.duplicate()
                     mass = .8
-            collision_shape.shape.height = height
-            collision_shape.shape.radius = radius
-            mesh.mesh.height = height
-            mesh.mesh.bottom_radius = radius
-            mesh.mesh.top_radius = radius
 
-    # TODO: Create a set of nicer materials that we can just swap around.
-    mesh.mesh.material = StandardMaterial3D.new()
-    match company:
-        Company.PERSONAL_DELIVERY_CONGLOMERATE:
-            mesh.mesh.material.albedo_color = Color(0.83203125, 0.70602869987488, 0.18749018013477)
-        Company.LOGISTICS_CORP:
-            mesh.mesh.material.albedo_color = Color(0.46042990684509, 0.55753999948502, 0.90625)
-        Company.SHIP_FOR_LESS:
-            mesh.mesh.material.albedo_color = Color(0.78382098674774, 1, 0.52286148071289)
+            match company:
+                Company.PERSONAL_DELIVERY_CONGLOMERATE:
+                    mesh.mesh.surface_set_material(0, tube_personal_delivery_conglomerate_material)
+                Company.LOGISTICS_CORP:
+                    mesh.mesh.surface_set_material(0, tube_logistics_corp_material)
+                Company.SHIP_FOR_LESS:
+                    mesh.mesh.surface_set_material(0, tube_ship_for_less_material)
 
 func randomize():
     shape = get_random_shape()

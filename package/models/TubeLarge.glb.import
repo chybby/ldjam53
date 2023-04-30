@@ -1,0 +1,55 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://cbtgjvpytli3s"
+path="res://.godot/imported/TubeLarge.glb-a210882b2bc01fd0b5dd0d85135f475d.scn"
+
+[deps]
+
+source_file="res://package/models/TubeLarge.glb"
+dest_files=["res://.godot/imported/TubeLarge.glb-a210882b2bc01fd0b5dd0d85135f475d.scn"]
+
+[params]
+
+nodes/root_type="Node3D"
+nodes/root_name="Scene Root"
+nodes/apply_root_scale=true
+nodes/root_scale=1.0
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+import_script/path=""
+_subresources={
+"meshes": {
+"TubeLarge_Cylinder001": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": "res://package/meshes/tube_large_mesh.tres"
+}
+},
+"nodes": {
+"PATH:TubePackageLarge": {
+"generate/physics": true,
+"physics/body_type": 1,
+"physics/shape_type": 5,
+"primitive/height": 1.5,
+"primitive/position": Vector3(0, 0.75, 0),
+"primitive/radius": 0.15
+}
+}
+}
+gltf/embedded_image_handling=1
