@@ -1,8 +1,11 @@
 extends CharacterBody3D
 
-@export var speed = 50
+const Package = preload("res://package/package.gd")
+
+@export var speed = 100
 
 var is_satisfied = false
+var needed_package: Package
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -39,13 +42,6 @@ func _physics_process(delta):
 
     move_and_slide()
 
-
-func _on_area_3d_body_entered(body):
-    if body.collision_layer == 1 << 1:
-        print("satisfied")
-        is_satisfied = true
-
 func _on_area_3d_area_entered(area):
-    print(area.collision_layer)
     if area.collision_layer == 1 << 4 and is_satisfied:
         queue_free()

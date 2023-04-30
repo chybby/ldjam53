@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dycckerh6k1ca"]
+[gd_scene load_steps=13 format=3 uid="uid://bewap3blcn6p6"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_8ll5v"]
 [ext_resource type="PackedScene" uid="uid://bf5v5fhrtivwr" path="res://level/level.glb" id="1_kk78k"]
-[ext_resource type="PackedScene" uid="uid://csv2s18dbgn2b" path="res://level/shelves.tscn" id="2_vylrv"]
+[ext_resource type="PackedScene" uid="uid://gkwssng0r3uv" path="res://level/shelves.tscn" id="2_vylrv"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_l8tvu"]
 
@@ -81,6 +81,69 @@ shadow_mesh = SubResource("ArrayMesh_4xb76")
 [sub_resource type="BoxShape3D" id="BoxShape3D_vwcly"]
 size = Vector3(2.75934, 4.51404, 1.87886)
 
+[sub_resource type="Animation" id="Animation_b4mu8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Warning Light/SpotLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Warning Light/SpotLight3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 6.28319, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Warning Light:mesh:surface_0/material:emission_energy_multiplier")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Warning Light/SpotLight3D2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Warning Light/SpotLight3D2:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_mfn1c"]
 resource_name = "spinning_light"
 length = 2.0
@@ -146,69 +209,6 @@ tracks/4/keys = {
 "values": [0.0, 1.5, 0.0, 1.5, 0.0]
 }
 
-[sub_resource type="Animation" id="Animation_b4mu8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Warning Light/SpotLight3D:light_energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Warning Light/SpotLight3D:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 6.28319, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Warning Light:mesh:surface_0/material:emission_energy_multiplier")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Warning Light/SpotLight3D2:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 3.14159, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Warning Light/SpotLight3D2:light_energy")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vlj7p"]
 _data = {
 "RESET": SubResource("Animation_b4mu8"),
@@ -233,14 +233,14 @@ transform = Transform3D(-9.39795e-08, 2.15, 0, -2.15, -9.39795e-08, 0, 0, 0, 2.1
 mesh = SubResource("ArrayMesh_txw58")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Warning Light" index="0"]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, -0.0667086, 0)
+transform = Transform3D(1, 0, 4.46638e-06, 0, 1, 0, -4.46638e-06, 0, 1, 0, -0.0667086, 0)
 light_color = Color(1, 0, 0.203922, 1)
 light_energy = 0.0
 spot_range = 2.623
 spot_angle = 50.88
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Warning Light" index="1"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.0667086, 0)
+transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, 0, -0.0667086, 0)
 light_color = Color(1, 0, 0.203922, 1)
 light_energy = 0.0
 spot_range = 2.623
@@ -270,7 +270,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00715554, 4.19751, 5.68289
 [node name="PlayerSpawnPoint" type="Marker3D" parent="." index="10"]
 
 [node name="CustomerSpawnPoint" type="Marker3D" parent="." index="11"]
-transform = Transform3D(0.996294, -0.0860082, 1.74846e-07, 0.0860082, 0.996294, 0, -1.74198e-07, 1.50382e-08, 1, 9.49657, 0.115169, -6.99918)
+transform = Transform3D(0.996294, -0.0860082, 1.74846e-07, 0.0860082, 0.996294, 0, -1.74198e-07, 1.50382e-08, 1, 9.49657, 2.47111, -5.91984)
 
 [node name="CustomerExitArea" type="Area3D" parent="." index="12"]
 transform = Transform3D(0.999791, 0.0204014, 1.73855e-07, -0.0204014, 0.999791, -1.85889e-08, -1.74198e-07, 1.50382e-08, 1, -1.88466, 0.124595, -12.1548)
