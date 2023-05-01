@@ -1,10 +1,10 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ci4ddb0j368ai"]
 
-[ext_resource type="Texture2D" uid="uid://ndsr2hcv4312" path="res://package/models/box_logistics_corp.png" id="1_3sb81"]
+[ext_resource type="Texture2D" uid="uid://te2m1g1jbsxb" path="res://package/textures/logistics_corp.png" id="1_xtc4y"]
 
 [resource]
 resource_name = "BoxPackageLogisticsCorp"
 cull_mode = 2
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_3sb81")
+albedo_texture = ExtResource("1_xtc4y")
 texture_filter = 0

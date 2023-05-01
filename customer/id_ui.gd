@@ -1,6 +1,8 @@
 extends Control
 
-@onready var label = $Panel/Label
+@onready var name_label = $Panel/Name
+@onready var address_label = $Panel/Address
 
-func set_label(name: String):
-    label.text = name
+func set_contents(name: String, address: String):
+    name_label.text = name
+    address_label.text = address

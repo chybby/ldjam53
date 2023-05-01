@@ -19,12 +19,9 @@ const tube_large_shape = preload("res://package/shapes/tube_large_shape.tres")
 const tube_medium_shape = preload("res://package/shapes/tube_medium_shape.tres")
 const tube_small_shape = preload("res://package/shapes/tube_small_shape.tres")
 
-const box_personal_delivery_conglomerate_material = preload("res://package/materials/box_personal_delivery_conglomerate.tres")
-const box_logistics_corp_material = preload("res://package/materials/box_logistics_corp.tres")
-const box_ship_for_less_material = preload("res://package/materials/box_ship_for_less.tres")
-const tube_personal_delivery_conglomerate_material = preload("res://package/materials/tube_personal_delivery_conglomerate.tres")
-const tube_logistics_corp_material = preload("res://package/materials/tube_logistics_corp.tres")
-const tube_ship_for_less_material = preload("res://package/materials/tube_ship_for_less.tres")
+const personal_delivery_conglomerate_material = preload("res://package/materials/personal_delivery_conglomerate.tres")
+const logistics_corp_material = preload("res://package/materials/logistics_corp.tres")
+const ship_for_less_material = preload("res://package/materials/ship_for_less.tres")
 
 class Address:
     var street_number: String
@@ -91,14 +88,6 @@ func update_model():
                     collision_shape.shape = box_large_shape
                     mesh.mesh = box_large_mesh.duplicate()
                     mass = 1.5
-
-            match company:
-                Company.PERSONAL_DELIVERY_CONGLOMERATE:
-                    mesh.mesh.surface_set_material(0, box_personal_delivery_conglomerate_material)
-                Company.LOGISTICS_CORP:
-                    mesh.mesh.surface_set_material(0, box_logistics_corp_material)
-                Company.SHIP_FOR_LESS:
-                    mesh.mesh.surface_set_material(0, box_ship_for_less_material)
         Shape.TUBE:
             match size:
                 Size.SMALL:
@@ -114,13 +103,13 @@ func update_model():
                     mesh.mesh = tube_large_mesh.duplicate()
                     mass = .8
 
-            match company:
-                Company.PERSONAL_DELIVERY_CONGLOMERATE:
-                    mesh.mesh.surface_set_material(0, tube_personal_delivery_conglomerate_material)
-                Company.LOGISTICS_CORP:
-                    mesh.mesh.surface_set_material(0, tube_logistics_corp_material)
-                Company.SHIP_FOR_LESS:
-                    mesh.mesh.surface_set_material(0, tube_ship_for_less_material)
+    match company:
+        Company.PERSONAL_DELIVERY_CONGLOMERATE:
+            mesh.mesh.surface_set_material(0, personal_delivery_conglomerate_material)
+        Company.LOGISTICS_CORP:
+            mesh.mesh.surface_set_material(0, logistics_corp_material)
+        Company.SHIP_FOR_LESS:
+            mesh.mesh.surface_set_material(0, ship_for_less_material)
 
 func randomize():
     shape = get_random_shape()

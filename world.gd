@@ -89,8 +89,10 @@ func _on_customer_spawn_timer_timeout():
     id.visible = false
     add_child(id)
     var id_ui := id.get_node("SubViewport/IDUI")
-    id_ui.set_label(customer.needed_package.first_name + " " + customer.needed_package.last_name
-    + "\n" + customer.needed_package.address._to_string())
+    id_ui.set_contents(
+        customer.needed_package.first_name + "\n" + customer.needed_package.last_name,
+        customer.needed_package.address._to_string()
+    )
     id_queue.push_back(id)
 
     customers_left_to_spawn -= 1

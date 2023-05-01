@@ -6,13 +6,14 @@
 viewport_path = NodePath("SubViewport")
 
 [node name="ID" type="Node3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(-4.23137e-08, 0.250853, 0.968025, 1.09651e-08, 0.968025, -0.250853, -1, 8.55992e-16, -4.37114e-08, 0, 0, 0)
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.035, 0, 0, 0, -0.000259614, 0.034999, 0, -0.034999, -0.000259614, 0.0020901, 0.0272079, -0.00700639)
 texture = SubResource("ViewportTexture_vmdsc")
 
 [node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
 size = Vector2i(1280, 720)
 
 [node name="IDUI" parent="SubViewport" instance=ExtResource("1_n3e58")]

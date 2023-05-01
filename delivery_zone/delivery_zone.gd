@@ -29,7 +29,7 @@ func update_screen(ignore_body):
             world.customer_queue.pop_front()
             if not world.customer_queue.is_empty():
                 world.customer_queue[0].target_node = self
-            for i in world.customer_queue.size()-1:
+            for i in world.customer_queue.size() - 1:
                 world.customer_queue[i+1].target_node = world.customer_queue[i]
 
             var id = world.id_queue.pop_front()
@@ -37,6 +37,8 @@ func update_screen(ignore_body):
             if not world.id_queue.is_empty():
                 world.id_queue[0].visible = true
             package_delivered.emit(package)
+        else:
+            animation_player.play('incorrect')
 
 
 func _on_waiting_area_body_entered(body:Node3D):
