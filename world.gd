@@ -37,19 +37,26 @@ func _ready():
 
 func start_day(day: int, skip_tutorial = false):
     print('Starting day %d' % day)
-    packages_left_to_spawn = 10 + day * 5
+    match day:
+        0:
+            packages_left_to_spawn = 5
+            package_spawn_timer.wait_time = 10
+        1:
+            packages_left_to_spawn = 15
+            package_spawn_timer.wait_time = 5
+        2:
+            packages_left_to_spawn = 200
+            package_spawn_timer.wait_time = 0.5
     customers_left_to_spawn = packages_left_to_spawn
     unclaimed_packages = []
     undelivered_packages = []
     packages_delivered = 0
     player.reset()
+    player.position = level.get_player_tutorial_spawn_position()
+    player.rotation = level.get_player_tutorial_spawn_rotation()
+    player.camera.rotate_x(.25)
     delivery_zone.reset()
     store_opener.reset()
-    player.position = level.get_player_spawn_position()
-    if day == 0 and not skip_tutorial:
-        player.position = level.get_player_tutorial_spawn_position()
-        player.rotation = level.get_player_tutorial_spawn_rotation()
-        player.camera.rotate_x(.25)
 
     for package in get_tree().get_nodes_in_group('packages'):
         package.free()
@@ -62,7 +69,7 @@ func start_day(day: int, skip_tutorial = false):
     # Reset the scanner in case a package was on it.
     scanner.reset()
 
-    if skip_tutorial or day > 0:
+    if skip_tutorial:
         start_package_spawning()
     else:
         phone.start_ringing()

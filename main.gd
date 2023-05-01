@@ -83,7 +83,8 @@ var day_0_tutorial : Array[String] = [
     "You could also store them by delivery company based on the logo on the box.",
     "Our logo is the blue man with the green hat.",
     "This centre also receives packages on behalf of Logistics Corp and Ship 4 Less.",
-    "Once all the packages have come in, customers will start coming around to collect them.",
+    "Once all the packages have come in, flip the switch to open the store.",
+    "Customers will start coming around to collect.",
     "Make sure to check their ID to find out their name and address.",
     "You can scan packages at the blue scanning machine in the back to see who they're for.",
     "I'll give you a bigger bonus if you can give customers the right package quickly...",
@@ -92,7 +93,31 @@ var day_0_tutorial : Array[String] = [
     "And remember, \"With Personal Delivery Conglomerate™, it's always personal®\" *click*",
 ]
 
+var day_1_tutorial : Array[String] = [
+    "Hello again!",
+    "More of the same today.",
+    "It was a busy day, there'll be a few more packages so you'll really have to bring your organisational A-game.",
+    "Anyway, I'm sure you're itching to get started. Get to work.",
+    "And remember, \"With Personal Delivery Conglomerate™, it's always personal®\" *click*",
+]
+
+var day_2_tutorial : Array[String] = [
+    "Hello once more!",
+    "Good job delivering all the packages yesterday, you did an adequate job.",
+    "Listen, there may be a few more packages today...",
+    "Some of our delivery drivers heard that I had started working from home and followed suit.",
+    "And by some I mean all.",
+    "Anyway, I'm sure it's nothing you can't handle :). Get to work.",
+    "And remember, \"With Personal Delivery Conglomerate™, it's always personal®\" *click*",
+]
+
 func _on_world_phone_call_started():
-    gui.show_call(day_0_tutorial)
+    match day:
+        0:
+            gui.show_call(day_0_tutorial)
+        1:
+            gui.show_call(day_1_tutorial)
+        2:
+            gui.show_call(day_2_tutorial)
     await gui.call_ended
     world.finish_call()
