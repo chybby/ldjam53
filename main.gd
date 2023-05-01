@@ -11,7 +11,7 @@ const Phone = preload("res://level/phone.gd")
 var can_pause := false
 
 const SKIP_MAIN_MENU := true
-const SKIP_TUTORIAL := false
+const SKIP_TUTORIAL := true
 
 var day = 0
 
