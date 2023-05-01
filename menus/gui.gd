@@ -5,9 +5,11 @@ signal game_started
 signal volume_changed(volume: float)
 signal mouse_sensitivity_changed(mouse_sensitivity: float)
 signal call_ended
+signal game_over_screen_closed
 
 @onready var main_menu_screen := $MainMenuScreen
 @onready var pause_screen := $PauseScreen
+@onready var game_over_screen := $GameOverScreen
 @onready var hud := $HUD
 
 var call_ongoing = false
@@ -25,6 +27,19 @@ func show_pause_screen():
         pause_screen.set_process_input(true)
         Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
         hud.visible = false
+
+func show_game_over_screen(packages: int, seconds: int):
+    game_over_screen.show_stats(packages, seconds)
+    game_over_screen.visible = true
+    game_over_screen.set_process_input(true)
+    Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+    hud.visible = false
+    await game_over_screen.dismissed
+    game_over_screen.visible = false
+    game_over_screen.set_process_input(false)
+    hud.visible = true
+    Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+    game_over_screen_closed.emit()
 
 func set_cursor(cursor: Cursor, instructions: String):
     hud.set_cursor(cursor, instructions)

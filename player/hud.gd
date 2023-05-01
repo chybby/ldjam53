@@ -53,4 +53,4 @@ func _gui_input(event):
 func show_dialog(text: String):
     dialog_box.visible = true
     dialog_label.text = text
-    dialog_animation_player.play("scroll_dialog", -1, 20.0/text.length())
+    dialog_animation_player.play("scroll_dialog", -1, 30.0/text.length())
