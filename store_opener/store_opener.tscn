@@ -1,0 +1,132 @@
+[gd_scene load_steps=9 format=3 uid="uid://brb5jtft15o2k"]
+
+[ext_resource type="Script" path="res://store_opener/store_opener.gd" id="1_dmiya"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atjn3"]
+albedo_color = Color(0.435294, 0.435294, 0.435294, 1)
+metallic = 0.71
+metallic_specular = 0.81
+roughness = 0.59
+
+[sub_resource type="BoxMesh" id="BoxMesh_4sedg"]
+material = SubResource("StandardMaterial3D_atjn3")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ds0lx"]
+size = Vector3(0.747514, 0.474577, 0.73696)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aj2ca"]
+
+[sub_resource type="Animation" id="Animation_kh52u"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Switch:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, -0.715009), Vector3(0, -3.14159, 0.715585)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Closed:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.180392, 0.180392, 0.180392, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Open:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.180392, 0.180392, 0.180392, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_myhf6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Switch:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -3.14159, -0.715009)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Closed:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Open:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.180392, 0.180392, 0.180392, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w16wx"]
+_data = {
+"RESET": SubResource("Animation_myhf6"),
+"open": SubResource("Animation_kh52u")
+}
+
+[node name="StoreOpener" type="StaticBody3D"]
+collision_layer = 68
+collision_mask = 3
+script = ExtResource("1_dmiya")
+
+[node name="Box" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.233, 0, 0, 0, 0.7, 0, 0, 0)
+mesh = SubResource("BoxMesh_4sedg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.111368, 0)
+shape = SubResource("BoxShape3D_ds0lx")
+
+[node name="Switch" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0473159, 0.373887, -1.57834e-08, 0.0410833, -0.430608, 0, 4.13649e-09, 3.26862e-08, 0.180541, 0, 0.113941, 0)
+mesh = SubResource("BoxMesh_aj2ca")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w16wx")
+}
+
+[node name="Closed" type="Label3D" parent="."]
+transform = Transform3D(4.37114e-08, 1, 4.37114e-08, 3.82137e-15, -4.37114e-08, 1, 1, -4.37114e-08, -5.73206e-15, -0.5, 0, 0)
+text = "CLOSED"
+
+[node name="Open" type="Label3D" parent="."]
+transform = Transform3D(4.37114e-08, 1, -4.37114e-08, -8.74228e-08, 4.37114e-08, 1, 1, -4.37114e-08, 8.74228e-08, 0.5, 0, 0)
+modulate = Color(0.180392, 0.180392, 0.180392, 1)
+text = "OPEN"
