@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dsdesb5wro10h"]
+[gd_scene load_steps=19 format=3 uid="uid://dsdesb5wro10h"]
 
 [ext_resource type="Script" path="res://player/hud.gd" id="1_7y742"]
 [ext_resource type="Texture2D" uid="uid://dpu1r64cdp6tm" path="res://menus/open_hand_cursor.png" id="2_c7iho"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bmi7kqge5ma3j" path="res://player/left_click.png" id="4_cmpek"]
 [ext_resource type="Texture2D" uid="uid://d1eebesm5csjk" path="res://player/right_click.png" id="5_3b3o6"]
 [ext_resource type="AudioStream" uid="uid://bpp3jebu3xv61" path="res://level/boss_talking.wav" id="6_lrky4"]
+[ext_resource type="Texture2D" uid="uid://cr223ndujt6a5" path="res://menus/disallowed.png" id="6_popr8"]
 
 [sub_resource type="Gradient" id="Gradient_lwvfo"]
 offsets = PackedFloat32Array(0, 0.412844, 0.541284, 0.580275, 0.688073)
@@ -274,6 +275,36 @@ expand_mode = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 30
 text = "Rotate
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DisallowControls" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -81.5
+offset_top = -64.0
+offset_right = 81.5
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="DisallowControls"]
+texture_filter = 4
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("6_popr8")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="DisallowControls"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Waiting For Packages
 "
 horizontal_alignment = 1
 vertical_alignment = 1

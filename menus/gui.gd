@@ -14,7 +14,7 @@ signal game_over_screen_closed
 
 var call_ongoing = false
 
-enum Cursor {DOT, OPEN_HAND, CLOSED_HAND}
+enum Cursor {DOT, OPEN_HAND, CLOSED_HAND, DISALLOW}
 
 func _ready():
     main_menu_screen.set_process_input(true)
