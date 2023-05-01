@@ -7,6 +7,7 @@ signal all_packages_spawned
 const PackageScene = preload("res://package/package.tscn")
 const Package = preload("res://package/package.gd")
 const CustomerScene = preload("res://customer/customer.tscn")
+const CarScene = preload("res://car/car.tscn")
 
 @onready var level := $Level
 @onready var player := $Player
@@ -152,3 +153,15 @@ func finish_call():
 func _on_store_opener_store_opened():
     print("store opened")
     start_customer_spawning()
+
+func _on_car_spawn_timer_timeout():
+    var car := CarScene.instantiate()
+    var x = randi_range(1,2)
+    if x == 1:
+        car.position = level.get_car_spawn1_position()
+        car.rotation = level.get_car_spawn1_rotation()
+        car.flip = false
+    else:
+        car.position = level.get_car_spawn2_position()
+        car.flip = true
+    add_child(car)

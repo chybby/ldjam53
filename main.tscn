@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://brb5jtft15o2k" path="res://store_opener/store_opener.tscn" id="9_nljgg"]
 [ext_resource type="PackedScene" uid="uid://dsdesb5wro10h" path="res://player/hud.tscn" id="9_s8eft"]
 [ext_resource type="AudioStream" uid="uid://6xy0msy1ntfx" path="res://music.wav" id="12_pario"]
-[ext_resource type="PackedScene" uid="uid://t7bpxt76sj6g" path="res://menus/game_over_screen.tscn" id="13_0b3ds"]
+[ext_resource type="PackedScene" path="res://menus/game_over_screen.tscn" id="13_0b3ds"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j6kb4"]
 sky_top_color = Color(0.27451, 0.45098, 0.556863, 1)
@@ -202,6 +202,9 @@ text = "15"
 font_size = 140
 outline_size = 19
 
+[node name="CarSpawnTimer" type="Timer" parent="World"]
+autostart = true
+
 [node name="GUI" type="Control" parent="."]
 process_mode = 3
 layout_mode = 3
@@ -240,6 +243,7 @@ autoplay = true
 [connection signal="timeout" from="World/PackageSpawnTimer" to="World" method="_on_package_spawn_timer_timeout"]
 [connection signal="timeout" from="World/CustomerSpawnTimer" to="World" method="_on_customer_spawn_timer_timeout"]
 [connection signal="store_opened" from="World/StoreOpener" to="World" method="_on_store_opener_store_opened"]
+[connection signal="timeout" from="World/CarSpawnTimer" to="World" method="_on_car_spawn_timer_timeout"]
 [connection signal="call_ended" from="GUI" to="World/StoreOpener" method="_on_gui_call_ended"]
 [connection signal="game_started" from="GUI" to="." method="_on_gui_game_started"]
 [connection signal="mouse_sensitivity_changed" from="GUI" to="." method="_on_gui_mouse_sensitivity_changed"]
