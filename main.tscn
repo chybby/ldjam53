@@ -74,7 +74,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.3263
 transform = Transform3D(-0.999993, 0.00296167, -0.00236812, 0.00295959, 0.999995, 0.000880517, 0.00237072, 0.000873506, -0.999997, 6.72546, 1.10564, 14.581)
 
 [node name="PackageSpawnTimer" type="Timer" parent="World"]
-wait_time = 10.0
+wait_time = 0.5
 
 [node name="Package" parent="World" instance=ExtResource("6_okuef")]
 transform = Transform3D(0.946891, 0, 0.321555, 0, 1, 0, -0.321555, 0, 0.946891, -5.92979, 1.62644, 8.89482)
