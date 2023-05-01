@@ -3,9 +3,9 @@ on: [push, workflow_dispatch]
 
 env:
   GODOT_VERSION: 4.0.2
-  EXPORT_NAME: ldjam53
+  EXPORT_NAME: personal-delivery-conglomerate
   ITCHIO_USERNAME: chybby
-  ITCHIO_GAME: ldjam53
+  ITCHIO_GAME: personal-delivery-conglomerate
 
 jobs:
   build-windows:

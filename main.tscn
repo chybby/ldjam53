@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dmv4x7ot7u5xx"]
+[gd_scene load_steps=20 format=3 uid="uid://bxdyhmyeeg4y0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dkgit"]
 [ext_resource type="Script" path="res://world.gd" id="2_5pf3l"]
