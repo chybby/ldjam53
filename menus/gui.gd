@@ -4,10 +4,13 @@ signal unpaused
 signal game_started
 signal volume_changed(volume: float)
 signal mouse_sensitivity_changed(mouse_sensitivity: float)
+signal call_ended
 
 @onready var main_menu_screen := $MainMenuScreen
 @onready var pause_screen := $PauseScreen
 @onready var hud := $HUD
+
+var call_ongoing = false
 
 enum Cursor {DOT, OPEN_HAND, CLOSED_HAND}
 
@@ -23,8 +26,8 @@ func show_pause_screen():
         Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
         hud.visible = false
 
-func set_cursor(cursor: Cursor):
-    hud.set_cursor(cursor)
+func set_cursor(cursor: Cursor, instructions: String):
+    hud.set_cursor(cursor, instructions)
 
 func fade_out():
     return hud.fade_out()
@@ -54,3 +57,10 @@ func _on_pause_screen_mouse_sensitivity_changed(mouse_sensitivity: float):
 
 func _on_pause_screen_volume_changed(volume: float):
     volume_changed.emit(volume)
+
+func show_call(dialog: Array[String]):
+    call_ongoing = true
+    for line in dialog:
+        hud.show_dialog(line)
+        await hud.next_dialog
+    call_ended.emit()

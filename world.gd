@@ -1,6 +1,7 @@
 extends Node3D
 
 signal day_ended
+signal phone_call_started
 
 const PackageScene = preload("res://package/package.tscn")
 const Package = preload("res://package/package.gd")
@@ -12,6 +13,7 @@ const CustomerScene = preload("res://customer/customer.tscn")
 @onready var delivery_zone := $DeliveryZone
 @onready var id_spawn_point := $DeliveryZone/IDSpawnPoint
 @onready var package_spawn_timer := $PackageSpawnTimer
+@onready var phone := $Phone
 
 var customer_queue = []
 
@@ -22,22 +24,35 @@ var unclaimed_packages: Array[Package] = []
 # Packages that haven't been given to the right customer yet.
 var undelivered_packages: Array[Package] = []
 
-func start_day(day: int):
+func start_day(day: int, skip_tutorial = false):
     print('Starting day %d' % day)
     packages_left_to_spawn = 2
     customers_left_to_spawn = packages_left_to_spawn
     unclaimed_packages = []
     undelivered_packages = []
     player.reset()
+    delivery_zone.reset()
     player.position = level.get_player_spawn_position()
-    package_spawn_timer.start()
-    level.turn_on_light()
 
     for package in get_tree().get_nodes_in_group('packages'):
         package.free()
 
+    for customer in get_tree().get_nodes_in_group('customers'):
+        customer.free()
+
+    customer_queue = []
+
     # Reset the scanner in case a package was on it.
     scanner.reset()
+
+    if skip_tutorial:
+        start_package_spawning()
+    else:
+        phone.start_ringing()
+
+func start_package_spawning():
+    package_spawn_timer.start()
+    level.turn_on_light()
 
 func _on_package_spawn_timer_timeout():
     var package := PackageScene.instantiate()
@@ -85,3 +100,12 @@ func _on_customer_spawn_timer_timeout():
     add_child(customer)
     var tween = get_tree().create_tween()
     tween.tween_property(customer_sprite, "modulate", Color(1,1,1,1), 1)
+
+func _on_phone_call_started():
+    player.can_move = false
+    phone_call_started.emit()
+
+func finish_call():
+    phone.finish_call()
+    player.can_move = true
+    start_package_spawning()

@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+var Package = preload("res://package/package.gd")
+
 @export var walk_speed := 3.0
 @export var sprint_speed := 6.0
 @export var jump_velocity := 4.5
@@ -14,12 +16,15 @@ extends CharacterBody3D
 var hovered_object: Node = null
 var held_object: RigidBody3D = null
 
+var can_move = true
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-var Package = preload("res://package/package.gd")
-
 func _unhandled_input(event):
+    if not can_move:
+        return
+
     if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
         if Input.is_action_pressed("rotate_held_item") and held_object != null:
             var torque := Vector3(event.relative.y, event.relative.x, 0) * held_item_rotate_strength * mouse_sensitivity

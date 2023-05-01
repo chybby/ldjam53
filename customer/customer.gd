@@ -83,7 +83,7 @@ func description_from_company(company):
             return descriptions.pick_random()
         Package.Company.SHIP_FOR_LESS:
             var descriptions = [
-                "Ship For Less",
+                "Ship 4 Less",
                 "that delivery company for cheapskates",
             ]
             return descriptions.pick_random()
