@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bxdyhmyeeg4y0"]
+[gd_scene load_steps=17 format=3 uid="uid://bxdyhmyeeg4y0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dkgit"]
 [ext_resource type="Script" path="res://world.gd" id="2_5pf3l"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ytwls2x44x3h" path="res://scanner/scanner.tscn" id="6_qxux1"]
 [ext_resource type="PackedScene" uid="uid://dg5ljrugpyfv2" path="res://menus/pause_screen.tscn" id="8_dfw4l"]
 [ext_resource type="PackedScene" uid="uid://dsdesb5wro10h" path="res://player/hud.tscn" id="9_s8eft"]
+[ext_resource type="AudioStream" uid="uid://6xy0msy1ntfx" path="res://music.wav" id="12_pario"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j6kb4"]
 sky_top_color = Color(0.27451, 0.45098, 0.556863, 1)
@@ -197,6 +198,10 @@ layout_mode = 1
 [node name="HUD" parent="GUI" instance=ExtResource("9_s8eft")]
 visible = false
 layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_pario")
+autoplay = true
 
 [connection signal="day_ended" from="World" to="." method="_on_world_day_ended"]
 [connection signal="package_delivered" from="World/DeliveryZone" to="World" method="_on_delivery_zone_package_delivered"]
