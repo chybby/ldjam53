@@ -2,7 +2,7 @@ extends Node3D
 
 const Package = preload("res://package/package.gd")
 
-@onready var id_ui = $SubViewport/IDUI
+@onready var id_ui = $Viewport/IDUI
 
 var package: Package = null
 

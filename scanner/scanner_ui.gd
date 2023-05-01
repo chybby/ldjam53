@@ -4,9 +4,9 @@ extends Control
 @onready var name_label := $Panel/NameLabel
 @onready var address_label := $Panel/AddressLabel
 
-func display_name_address(name: String, address: String):
+func display_name_address(customer_name: String, address: String):
     name_label.visible = true
-    name_label.text = name
+    name_label.text = customer_name
     address_label.visible = true
     address_label.text = address
     scan_something_label.visible = false

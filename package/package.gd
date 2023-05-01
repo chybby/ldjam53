@@ -111,7 +111,7 @@ func update_model():
         Company.SHIP_FOR_LESS:
             mesh.mesh.surface_set_material(0, ship_for_less_material)
 
-func randomize():
+func randomize_attributes():
     shape = get_random_shape()
     size = get_random_size()
     company = get_random_company()

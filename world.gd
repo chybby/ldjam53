@@ -41,7 +41,7 @@ func start_day(day: int):
 
 func _on_package_spawn_timer_timeout():
     var package := PackageScene.instantiate()
-    package.randomize()
+    package.randomize_attributes()
     # TODO: Make sure 2 packages with the same name + address don't exist.
     package.position = level.get_package_spawn_position()
     add_child(package)
@@ -58,7 +58,6 @@ func _on_delivery_zone_package_delivered(package: Package):
     undelivered_packages.erase(package)
     print('packages left to deliver: %d' % undelivered_packages.size())
 
-    # TODO: give the package to the customer at the start of the queue.
     package.queue_free()
 
     if undelivered_packages.is_empty():

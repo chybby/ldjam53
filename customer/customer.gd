@@ -8,7 +8,7 @@ const IDScene = preload("res://customer/id.tscn")
 @export var follow_distance = 1
 
 @onready var speech_bubble = $Speech
-@onready var speech_bubble_ui = $SubViewport/SpeechBubble
+@onready var speech_bubble_ui = $Viewport/SpeechBubble
 
 var is_satisfied = false
 var needed_package: Package
@@ -28,7 +28,7 @@ func setup(_target_node, _exit_area, package: Package):
 
     id = IDScene.instantiate()
     id.from_package(package)
-    # TODO: say something about package.
+
     speech = generate_speech()
 
 func description_from_size(size):

@@ -1,154 +1,152 @@
-[gd_scene load_steps=16 format=3 uid="uid://8cotxj0okskq"]
+[gd_scene load_steps=11 format=3 uid="uid://dbt6k1wmtsl8c"]
 
-[ext_resource type="Script" path="res://delivery_zone/delivery_zone.gd" id="1_g2s3x"]
+[ext_resource type="PackedScene" uid="uid://cfaioubr61o0u" path="res://delivery_zone/delivery_zone.glb" id="1_alewi"]
+[ext_resource type="Script" path="res://delivery_zone/delivery_zone.gd" id="2_v03q3"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3bv41"]
-albedo_color = Color(0.654902, 1, 0.976471, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_tkfjh"]
-material = SubResource("StandardMaterial3D_3bv41")
-size = Vector3(1, 0.05, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_v6g34"]
-size = Vector3(1, 0.05, 1)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_d6bc1"]
-top_radius = 0.05
-bottom_radius = 0.05
-height = 0.5
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_xpjgd"]
-height = 0.5
-radius = 0.05
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjdhl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kuly1"]
+albedo_color = Color(0.25098, 0.25098, 0.25098, 1)
 emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_5yioi"]
-material = SubResource("StandardMaterial3D_wjdhl")
-size = Vector3(0.05, 0.2, 0.3)
+[sub_resource type="PlaneMesh" id="PlaneMesh_gac3v"]
+material = SubResource("StandardMaterial3D_kuly1")
+size = Vector2(0.22, 0.22)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_g0sam"]
-size = Vector3(0.05, 0.2, 0.3)
+[sub_resource type="BoxShape3D" id="BoxShape3D_plmo0"]
+size = Vector3(0.756082, 0.40517, 0.68)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_qewf8"]
-size = Vector3(0.858751, 0.53512, 0.788442)
+[sub_resource type="BoxShape3D" id="BoxShape3D_4y873"]
+size = Vector3(2.09285, 1, 2.36244)
 
-[sub_resource type="Animation" id="Animation_6osrl"]
+[sub_resource type="Animation" id="Animation_2blrs"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Screen/MeshInstance3D:mesh:material:emission")
+tracks/0/path = NodePath("Screen:mesh:material:emission_energy_multiplier")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 1)]
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screen:mesh:material:emission")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_61k6w"]
+[sub_resource type="Animation" id="Animation_ie44f"]
 resource_name = "correct"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Screen/MeshInstance3D:mesh:material:emission")
+tracks/0/path = NodePath("Screen:mesh:material:emission_energy_multiplier")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1),
+"times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 1, 0, 1), Color(0, 0, 0, 1)]
+"values": [0.0, 2.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screen:mesh:material:emission")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.352941, 1, 0, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_esy4x"]
+[sub_resource type="Animation" id="Animation_x7e8i"]
 resource_name = "incorrect"
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Screen/MeshInstance3D:mesh:material:emission")
+tracks/0/path = NodePath("Screen:mesh:material:emission_energy_multiplier")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1),
+"times": PackedFloat32Array(0, 0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(1, 0, 0, 1), Color(0, 0, 0, 1)]
+"values": [0.0, 2.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Screen:mesh:material:emission")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yfpew"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2f48a"]
 _data = {
-"RESET": SubResource("Animation_6osrl"),
-"correct": SubResource("Animation_61k6w"),
-"incorrect": SubResource("Animation_esy4x")
+"RESET": SubResource("Animation_2blrs"),
+"correct": SubResource("Animation_ie44f"),
+"incorrect": SubResource("Animation_x7e8i")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_hxrih"]
-size = Vector3(2.09285, 1, 2.36244)
+[node name="DeliveryZone" instance=ExtResource("1_alewi")]
+script = ExtResource("2_v03q3")
 
-[node name="DeliveryZone" type="Node3D"]
-script = ExtResource("1_g2s3x")
+[node name="DeliveryZone" parent="." index="0"]
+transform = Transform3D(0.425568, 0, 0, 0, 0.425568, 0, 0, 0, 0.425568, 0, 0.424311, 0)
 
-[node name="Base" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" parent="DeliveryZone" index="0"]
+collision_layer = 4
+collision_mask = 3
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0250122, 0)
-mesh = SubResource("BoxMesh_tkfjh")
-skeleton = NodePath("../..")
+[node name="Screen" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(-3.67807e-08, -0.841445, 0.540343, 1, -4.37114e-08, 0, 2.36191e-08, 0.540343, 0.841445, -0.0297065, 0.483462, -0.65001)
+mesh = SubResource("PlaneMesh_gac3v")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Base"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0243062, 0)
-shape = SubResource("BoxShape3D_v6g34")
-
-[node name="Stand" type="StaticBody3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Stand"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.297396, -0.411203)
-mesh = SubResource("CylinderMesh_d6bc1")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Stand"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.298502, -0.411128)
-shape = SubResource("CylinderShape3D_xpjgd")
-
-[node name="Screen" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00498268, -0.403082)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Screen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.641872, 0)
-mesh = SubResource("BoxMesh_5yioi")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Screen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.642269, 0)
-shape = SubResource("BoxShape3D_g0sam")
-
-[node name="DeliveryArea" type="Area3D" parent="."]
+[node name="DeliveryArea" type="Area3D" parent="." index="2"]
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeliveryArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.308371, 0)
-shape = SubResource("BoxShape3D_qewf8")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeliveryArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.257911, 0)
+shape = SubResource("BoxShape3D_plmo0")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_yfpew")
-}
-
-[node name="WaitingArea" type="Area3D" parent="."]
+[node name="WaitingArea" type="Area3D" parent="." index="3"]
 collision_layer = 32
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WaitingArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WaitingArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33907, 0, -0.116076)
-shape = SubResource("BoxShape3D_hxrih")
+shape = SubResource("BoxShape3D_4y873")
 
-[node name="IDSpawnPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.228587, 0.151264, 1.05762)
+[node name="IDSpawnPoint" type="Marker3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.228587, 0.151264, 0.75762)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="5"]
+libraries = {
+"": SubResource("AnimationLibrary_2f48a")
+}
 
 [connection signal="body_entered" from="DeliveryArea" to="." method="_on_delivery_area_body_entered"]
 [connection signal="body_exited" from="DeliveryArea" to="." method="_on_delivery_area_body_exited"]
 [connection signal="body_entered" from="WaitingArea" to="." method="_on_waiting_area_body_entered"]
-[connection signal="body_exited" from="WaitingArea" to="." method="_on_waiting_area_body_exited"]

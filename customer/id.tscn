@@ -3,19 +3,20 @@
 [ext_resource type="PackedScene" uid="uid://cx4gere3p5id0" path="res://customer/id_ui.tscn" id="1_n3e58"]
 [ext_resource type="Script" path="res://customer/id.gd" id="1_q5je4"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_vmdsc"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_k76uv"]
+viewport_path = NodePath("Viewport")
 
 [node name="ID" type="Node3D"]
 transform = Transform3D(1.29736e-07, -0.250853, -0.968025, 1.09651e-08, 0.968025, -0.250853, 1, 2.19303e-08, 1.28339e-07, 0, 0, 0)
 script = ExtResource("1_q5je4")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.035, 0, 0, 0, -0.000259614, 0.034999, 0, -0.034999, -0.000259614, 0.0020901, 0.0272079, -0.00700639)
-texture = SubResource("ViewportTexture_vmdsc")
-
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="Viewport" type="SubViewport" parent="."]
 transparent_bg = true
 size = Vector2i(1280, 720)
+render_target_update_mode = 4
 
-[node name="IDUI" parent="SubViewport" instance=ExtResource("1_n3e58")]
+[node name="IDUI" parent="Viewport" instance=ExtResource("1_n3e58")]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.035, 0, 0, 0, -0.000259614, 0.034999, 0, -0.034999, -0.000259614, 0.0020901, 0.0272079, -0.00700639)
+texture = SubResource("ViewportTexture_k76uv")
