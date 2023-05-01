@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dycckerh6k1ca"]
+[gd_scene load_steps=16 format=3 uid="uid://dycckerh6k1ca"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_8ll5v"]
 [ext_resource type="PackedScene" uid="uid://bf5v5fhrtivwr" path="res://level/level.glb" id="1_kk78k"]
 [ext_resource type="PackedScene" uid="uid://gkwssng0r3uv" path="res://level/shelves.tscn" id="2_vylrv"]
+[ext_resource type="AudioStream" uid="uid://efyw6jfubo0t" path="res://level/conveyor_belt.wav" id="4_vpprf"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ptx53"]
 
@@ -355,3 +356,35 @@ omni_range = 20.19
 libraries = {
 "": SubResource("AnimationLibrary_vlj7p")
 }
+
+[node name="ConveyorSound" type="AudioStreamPlayer3D" parent="." index="22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17276, 0.727576, 11.7762)
+stream = ExtResource("4_vpprf")
+autoplay = true
+stream_paused = true
+max_distance = 5.0
+panning_strength = 2.47
+
+[node name="ConveyorSound2" type="AudioStreamPlayer3D" parent="." index="23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.841509, 0.727576, 11.7762)
+stream = ExtResource("4_vpprf")
+autoplay = true
+stream_paused = true
+max_distance = 5.0
+panning_strength = 2.47
+
+[node name="ConveyorSound3" type="AudioStreamPlayer3D" parent="." index="24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59759, 1.30921, 10.7853)
+stream = ExtResource("4_vpprf")
+autoplay = true
+stream_paused = true
+max_distance = 5.0
+panning_strength = 2.47
+
+[node name="ConveyorSound4" type="AudioStreamPlayer3D" parent="." index="25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14344, 0.727576, 11.7762)
+stream = ExtResource("4_vpprf")
+autoplay = true
+stream_paused = true
+max_distance = 5.0
+panning_strength = 2.47

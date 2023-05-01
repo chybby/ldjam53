@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://ytwls2x44x3h"]
+[gd_scene load_steps=18 format=3 uid="uid://ytwls2x44x3h"]
 
 [ext_resource type="PackedScene" uid="uid://tocauoephr32" path="res://scanner/scanner.glb" id="1_2qwq6"]
 [ext_resource type="Script" path="res://scanner/scanner.gd" id="1_vv4rg"]
 [ext_resource type="PackedScene" uid="uid://c80lgts35xsrt" path="res://scanner/scanner_ui.tscn" id="2_kaamb"]
+[ext_resource type="AudioStream" uid="uid://ddugua0do00ff" path="res://scanner/scan.wav" id="4_gwcb5"]
+[ext_resource type="AudioStream" uid="uid://bc3rq003lyfnm" path="res://scanner/idle.wav" id="5_mdo0r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxgtn"]
 resource_name = "Scanner Laser"
@@ -209,6 +211,16 @@ libraries = {
 size = Vector2i(1920, 1080)
 
 [node name="ScannerUI" parent="Viewport" index="0" instance=ExtResource("2_kaamb")]
+
+[node name="ScanSound" type="AudioStreamPlayer3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0274, 0.134911)
+stream = ExtResource("4_gwcb5")
+
+[node name="IdleSound" type="AudioStreamPlayer3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06845, 0)
+stream = ExtResource("5_mdo0r")
+autoplay = true
+max_distance = 5.0
 
 [connection signal="body_entered" from="ScanArea" to="." method="_on_scan_area_body_entered" flags=18]
 [connection signal="body_exited" from="ScanArea" to="." method="_on_scan_area_body_exited" flags=18]
