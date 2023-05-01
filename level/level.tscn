@@ -1,9 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://dycckerh6k1ca"]
+[gd_scene load_steps=24 format=3 uid="uid://dycckerh6k1ca"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_8ll5v"]
 [ext_resource type="PackedScene" uid="uid://bf5v5fhrtivwr" path="res://level/level.glb" id="1_kk78k"]
 [ext_resource type="PackedScene" uid="uid://gkwssng0r3uv" path="res://level/shelves.tscn" id="2_vylrv"]
 [ext_resource type="AudioStream" uid="uid://efyw6jfubo0t" path="res://level/conveyor_belt.wav" id="4_vpprf"]
+[ext_resource type="AudioStream" uid="uid://5d11w23qev0u" path="res://level/alarm.wav" id="5_m3kiu"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ptx53"]
 
@@ -434,7 +435,7 @@ transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 3.09059,
 transform = Transform3D(-1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 3.09059, 0, 3.00658)
 
 [node name="PackageSpawnPoint" type="Marker3D" parent="." index="11"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00715554, 4.19751, 5.68289)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3249, 2.91175, 11.5786)
 
 [node name="PlayerSpawnPoint" type="Marker3D" parent="." index="12"]
 
@@ -536,3 +537,9 @@ stream = ExtResource("4_vpprf")
 autoplay = true
 max_distance = 5.0
 panning_strength = 2.47
+
+[node name="AlarmSound" type="AudioStreamPlayer3D" parent="." index="26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.85391, 3.02026, 11.4878)
+stream = ExtResource("5_m3kiu")
+attenuation_model = 1
+panning_strength = 1.51
