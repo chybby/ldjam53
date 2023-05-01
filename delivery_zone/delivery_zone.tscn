@@ -147,6 +147,8 @@ libraries = {
 "": SubResource("AnimationLibrary_2f48a")
 }
 
+[node name="Audio" type="AudioStreamPlayer3D" parent="." index="6"]
+
 [connection signal="body_entered" from="DeliveryArea" to="." method="_on_delivery_area_body_entered"]
 [connection signal="body_exited" from="DeliveryArea" to="." method="_on_delivery_area_body_exited"]
 [connection signal="body_entered" from="WaitingArea" to="." method="_on_waiting_area_body_entered"]
