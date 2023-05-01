@@ -13,6 +13,7 @@ Get to work.
 Controls:
   - `W` `A` `S` `D` to move.
   - `Shift` to sprint.
+  - `Space` to jump.
   - `Move Mouse` to look around.
   - `Left Click` to pick up parcels/interact.
   - `Right Click` to rotate held parcels.
