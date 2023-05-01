@@ -19,6 +19,34 @@ const tube_large_shape = preload("res://package/shapes/tube_large_shape.tres")
 const tube_medium_shape = preload("res://package/shapes/tube_medium_shape.tres")
 const tube_small_shape = preload("res://package/shapes/tube_small_shape.tres")
 
+const pickup_sounds = [
+    preload("res://package/sounds/pickup_1.wav"),
+    preload("res://package/sounds/pickup_2.wav"),
+    preload("res://package/sounds/pickup_3.wav"),
+    preload("res://package/sounds/pickup_4.wav")
+]
+
+const moving_sounds = [
+    [
+        preload("res://package/sounds/moving_a_1.wav"),
+        preload("res://package/sounds/moving_a_2.wav"),
+    ], [
+        preload("res://package/sounds/moving_b_1.wav"),
+        preload("res://package/sounds/moving_b_2.wav"),
+        preload("res://package/sounds/moving_b_3.wav"),
+        preload("res://package/sounds/moving_b_4.wav"),
+    ],[
+        preload("res://package/sounds/moving_c_1.wav"),
+        preload("res://package/sounds/moving_c_2.wav"),
+        preload("res://package/sounds/moving_c_3.wav"),
+        preload("res://package/sounds/moving_c_4.wav"),
+        preload("res://package/sounds/moving_c_5.wav"),
+        preload("res://package/sounds/moving_c_6.wav"),
+    ]
+]
+var moving_sounds_idx: int
+
+
 const personal_delivery_conglomerate_material = preload("res://package/materials/personal_delivery_conglomerate.tres")
 const logistics_corp_material = preload("res://package/materials/logistics_corp.tres")
 const ship_for_less_material = preload("res://package/materials/ship_for_less.tres")
@@ -110,6 +138,7 @@ func update_model():
             mesh.mesh.surface_set_material(0, logistics_corp_material)
         Company.SHIP_FOR_LESS:
             mesh.mesh.surface_set_material(0, ship_for_less_material)
+    moving_sounds_idx = randi_range(0, moving_sounds.size()-1)
 
 func randomize_attributes():
     shape = get_random_shape()
@@ -163,3 +192,14 @@ static func get_random_address():
         str(data[suburb]["postcode"]),
     )
 
+func _integrate_forces(state):
+    if (state.linear_velocity.length() > 0.5 \
+        or state.angular_velocity.length() > 4*PI) \
+        and not $Audio.playing:
+        $Audio.stream = moving_sounds[moving_sounds_idx].pick_random()
+        $Audio.play()
+
+func _on_sleeping_state_changed():
+    if not sleeping:
+        $Audio.stream = pickup_sounds.pick_random()
+        $Audio.play()

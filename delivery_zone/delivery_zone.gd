@@ -12,6 +12,9 @@ const ID = preload("res://customer/id.gd")
 @onready var waiting_area = $WaitingArea
 @onready var id_spawn_point = $IDSpawnPoint
 @onready var animation_player = $AnimationPlayer
+@onready var audio_player = $Audio
+var success_sound = preload("res://delivery_zone/success.wav")
+var wrong_sound = preload("res://delivery_zone/wrong.wav")
 
 var serving_customer: Customer = null
 var id: ID = null
@@ -30,6 +33,8 @@ func update_screen(ignore_body):
         if serving_customer == null:
             return
         if package.name == serving_customer.needed_package.name:
+            audio_player.stream = success_sound
+            audio_player.play()
             animation_player.play("correct")
             # TODO: show customer holding package?
             world.customer_queue[0].accept_package()
@@ -53,6 +58,8 @@ func update_screen(ignore_body):
             package_delivered.emit(package)
         else:
             animation_player.play('incorrect')
+            audio_player.stream = wrong_sound
+            audio_player.play()
 
 func reset():
     serving_customer = null

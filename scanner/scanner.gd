@@ -6,6 +6,7 @@ const Package = preload("res://package/package.gd")
 @onready var scan_area = $ScanArea
 @onready var animation_player = $AnimationPlayer
 @onready var laser_animation_player = $LaserAnimationPlayer
+@onready var scan_sound = $ScanSound
 
 func _ready():
     laser_animation_player.play("scan_laser")
@@ -22,6 +23,7 @@ func update_screen():
         var package: Package = bodies[0]
         scanner_ui.display_name_address(package.first_name + ' ' + package.last_name, str(package.address))
         animation_player.play("scan_light")
+        scan_sound.play()
     else:
         reset()
 
