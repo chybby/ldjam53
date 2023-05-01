@@ -26,7 +26,7 @@ var undelivered_packages: Array[Package] = []
 
 func start_day(day: int, skip_tutorial = false):
     print('Starting day %d' % day)
-    packages_left_to_spawn = 2
+    packages_left_to_spawn = 20
     customers_left_to_spawn = packages_left_to_spawn
     unclaimed_packages = []
     undelivered_packages = []

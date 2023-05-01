@@ -5,6 +5,7 @@ extends Node3D
 @onready var customer_spawn_point := $CustomerSpawnPoint
 @onready var customer_exit_area := $CustomerExitArea
 @onready var animation_player := $AnimationPlayer
+@onready var alarm_sound := $AlarmSound
 
 func get_player_spawn_position():
     return player_spawn_point.global_position
@@ -20,6 +21,8 @@ func get_customer_exit_position():
 
 func turn_on_light():
     animation_player.play("spinning_light")
+    alarm_sound.play()
 
 func turn_off_light():
     animation_player.play("RESET")
+    alarm_sound.stop()
