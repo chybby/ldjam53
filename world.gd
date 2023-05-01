@@ -17,6 +17,7 @@ const CustomerScene = preload("res://customer/customer.tscn")
 @onready var package_spawn_timer := $PackageSpawnTimer
 @onready var customer_spawn_timer := $CustomerSpawnTimer
 @onready var phone := $Phone
+@onready var package_display_label := $PackageDisplay/Label3D
 
 var customer_queue = []
 
@@ -30,16 +31,20 @@ var undelivered_packages: Array[Package] = []
 var packages_delivered := 0
 var start_time := 0
 
+var current_day := 0
+
 func _ready():
     player.position = level.get_player_tutorial_spawn_position()
     player.rotation = level.get_player_tutorial_spawn_rotation()
     player.camera.rotate_x(.25)
+    package_display_label.text = ''
 
 func start_day(day: int, skip_tutorial = false):
     print('Starting day %d' % day)
+    current_day = day
     match day:
         0:
-            packages_left_to_spawn = 5
+            packages_left_to_spawn = 1#5
             package_spawn_timer.wait_time = 10
         1:
             packages_left_to_spawn = 15
@@ -57,6 +62,7 @@ func start_day(day: int, skip_tutorial = false):
     player.camera.rotate_x(.25)
     delivery_zone.reset()
     store_opener.reset()
+    package_display_label.text = ''
 
     for package in get_tree().get_nodes_in_group('packages'):
         package.free()
@@ -75,6 +81,7 @@ func start_day(day: int, skip_tutorial = false):
         phone.start_ringing()
 
 func start_package_spawning():
+    package_display_label.text = '???' if current_day == 2 else str(packages_left_to_spawn)
     package_spawn_timer.start()
     level.turn_on_light()
     _on_package_spawn_timer_timeout()
@@ -89,6 +96,7 @@ func _on_package_spawn_timer_timeout():
     unclaimed_packages.append(package)
     undelivered_packages.append(package)
     packages_left_to_spawn -= 1
+    package_display_label.text = '???' if current_day == 2 else str(packages_left_to_spawn)
     if packages_left_to_spawn == 0:
         package_spawn_timer.stop()
         all_packages_spawned.emit()

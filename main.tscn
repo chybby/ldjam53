@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bxdyhmyeeg4y0"]
+[gd_scene load_steps=22 format=3 uid="uid://bxdyhmyeeg4y0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dkgit"]
 [ext_resource type="Script" path="res://world.gd" id="2_5pf3l"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://brb5jtft15o2k" path="res://store_opener/store_opener.tscn" id="9_nljgg"]
 [ext_resource type="PackedScene" uid="uid://dsdesb5wro10h" path="res://player/hud.tscn" id="9_s8eft"]
 [ext_resource type="AudioStream" uid="uid://6xy0msy1ntfx" path="res://music.wav" id="12_pario"]
-[ext_resource type="PackedScene" path="res://menus/game_over_screen.tscn" id="13_0b3ds"]
+[ext_resource type="PackedScene" uid="uid://t7bpxt76sj6g" path="res://menus/game_over_screen.tscn" id="13_0b3ds"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j6kb4"]
 sky_top_color = Color(0.27451, 0.45098, 0.556863, 1)
@@ -45,6 +45,13 @@ adjustment_enabled = true
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_owjb4"]
 dof_blur_far_distance = 6.01
 dof_blur_near_distance = 3.94
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6uhiv"]
+albedo_color = Color(0.254902, 0.254902, 0.254902, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ibxrh"]
+material = SubResource("StandardMaterial3D_6uhiv")
+size = Vector3(0.1, 0.8, 1)
 
 [node name="Main" type="Node"]
 process_mode = 3
@@ -183,6 +190,17 @@ wait_time = 5.0
 
 [node name="StoreOpener" parent="World" instance=ExtResource("9_nljgg")]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 4.70755, 1.78317, 6.35012)
+
+[node name="PackageDisplay" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0222, 2.04331, -7.28586)
+mesh = SubResource("BoxMesh_ibxrh")
+
+[node name="Label3D" type="Label3D" parent="World/PackageDisplay"]
+transform = Transform3D(-5.96046e-08, 0, 1, 0, 1, 0, -1, 0, -5.96046e-08, 0.0539341, 0, 0)
+outline_modulate = Color(1, 0, 0, 1)
+text = "15"
+font_size = 140
+outline_size = 19
 
 [node name="GUI" type="Control" parent="."]
 process_mode = 3
