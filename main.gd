@@ -4,6 +4,7 @@ const GUI = preload("res://menus/gui.gd")
 const Package = preload("res://package/package.gd")
 const Phone = preload("res://level/phone.gd")
 const StoreOpener = preload("res://store_opener/store_opener.gd")
+const QuitJobButton = preload("res://quit_job/quit_job_button.gd")
 
 @onready var gui := $GUI
 @onready var world := $World
@@ -45,6 +46,8 @@ func _process(delta):
             gui.set_cursor(GUI.Cursor.DISALLOW, 'Waiting For Packages')
         else:
             gui.set_cursor(GUI.Cursor.DOT, '')
+    elif is_instance_valid(player.hovered_object) and player.hovered_object is QuitJobButton:
+        gui.set_cursor(GUI.Cursor.OPEN_HAND, 'Quit Job')
     else:
         gui.set_cursor(GUI.Cursor.DOT, '')
 
@@ -121,3 +124,6 @@ func _on_world_phone_call_started():
             gui.show_call(day_2_tutorial)
     await gui.call_ended
     world.finish_call()
+
+func _on_quit_job_button_job_quitted():
+    get_tree().quit()

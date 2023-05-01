@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5jcdcsvglr2j"]
+
+[ext_resource type="Script" path="res://quit_job/quit_job_button.gd" id="1_cl7w8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t05jn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1s4nv"]
+albedo_color = Color(0.298039, 0.0156863, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k7fxo"]
+material = SubResource("StandardMaterial3D_1s4nv")
+size = Vector3(0.1, 0.8, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aceaw"]
+albedo_color = Color(1, 0.376471, 0, 1)
+emission_enabled = true
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 2.01
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qwgdp"]
+material = SubResource("StandardMaterial3D_aceaw")
+top_radius = 0.35
+bottom_radius = 0.35
+height = 0.2
+
+[node name="QuitJobButton" type="StaticBody3D"]
+collision_layer = 68
+collision_mask = 3
+script = ExtResource("1_cl7w8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_t05jn")
+
+[node name="Base" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_k7fxo")
+
+[node name="Button" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.111843, 0, 0)
+mesh = SubResource("CylinderMesh_qwgdp")
+
+[node name="Label3D" type="Label3D" parent="Button"]
+transform = Transform3D(4.37114e-08, 1, 8.74228e-08, 4.37114e-08, -8.74228e-08, 1, 1, -4.37114e-08, -4.37114e-08, 5.00827e-09, 0.114576, 0)
+text = "QUIT"
+font_size = 47
