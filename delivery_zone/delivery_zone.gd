@@ -61,6 +61,12 @@ func update_screen(ignore_body):
             audio_player.stream = wrong_sound
             audio_player.play()
 
+func reset():
+    serving_customer = null
+    if id != null:
+        remove_child(id)
+        id = null
+
 func display_id_for_customer(customer: Customer):
     id = customer.id
     add_child(id)

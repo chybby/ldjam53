@@ -94,6 +94,11 @@ move_held_item_away={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":8,"position":Vector2(79, 21),"global_position":Vector2(83, 64),"factor":1.0,"button_index":4,"pressed":true,"double_click":false,"script":null)
 ]
 }
+next_dialog={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(84, 13),"global_position":Vector2(88, 56),"factor":1.0,"button_index":1,"pressed":true,"double_click":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -103,6 +108,7 @@ move_held_item_away={
 3d_physics/layer_4="customers"
 3d_physics/layer_5="customer_exit"
 3d_physics/layer_6="delivery_waiting_area"
+3d_physics/layer_7="phone"
 
 [physics]
 
