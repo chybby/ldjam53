@@ -49,8 +49,8 @@ func _on_gui_game_started():
 func _on_gui_mouse_sensitivity_changed(mouse_sensitivity):
     player.mouse_sensitivity = mouse_sensitivity
 
-func _on_gui_volume_changed(volume):
-    pass # TODO: change volume.
+func _on_gui_volume_changed(volume: float):
+    AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume)
 
 func _on_world_day_ended():
     day += 1

@@ -82,6 +82,8 @@ alignment = 1
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_vertical = 6
+min_value = -70.0
+max_value = 40.0
 
 [node name="MouseSensitivitySlider" type="HSlider" parent="Panel/Sliders/Sliders"]
 custom_minimum_size = Vector2(300, 0)
