@@ -45,10 +45,10 @@ func start_day(day: int, skip_tutorial = false):
     current_day = day
     match day:
         0:
-            packages_left_to_spawn = 5
+            packages_left_to_spawn = 1#5
             package_spawn_timer.wait_time = 10
         1:
-            packages_left_to_spawn = 15
+            packages_left_to_spawn = 1#15
             package_spawn_timer.wait_time = 5
         2:
             packages_left_to_spawn = 200

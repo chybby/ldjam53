@@ -246,7 +246,6 @@ autoplay = true
 [connection signal="timeout" from="World/CustomerSpawnTimer" to="World" method="_on_customer_spawn_timer_timeout"]
 [connection signal="store_opened" from="World/StoreOpener" to="World" method="_on_store_opener_store_opened"]
 [connection signal="job_quitted" from="World/QuitJobButton" to="." method="_on_quit_job_button_job_quitted"]
-[connection signal="call_ended" from="GUI" to="World/StoreOpener" method="_on_gui_call_ended"]
 [connection signal="game_started" from="GUI" to="." method="_on_gui_game_started"]
 [connection signal="mouse_sensitivity_changed" from="GUI" to="." method="_on_gui_mouse_sensitivity_changed"]
 [connection signal="unpaused" from="GUI" to="." method="_on_gui_unpaused"]
