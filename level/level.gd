@@ -1,11 +1,18 @@
 extends Node3D
 
 @onready var package_spawn_point := $PackageSpawnPoint
+@onready var player_tutorial_spawn_point := $PlayerTutorialSpawnPoint
 @onready var player_spawn_point := $PlayerSpawnPoint
 @onready var customer_spawn_point := $CustomerSpawnPoint
 @onready var customer_exit_area := $CustomerExitArea
 @onready var animation_player := $AnimationPlayer
 @onready var alarm_sound := $AlarmSound
+
+func get_player_tutorial_spawn_position():
+    return player_tutorial_spawn_point.global_position
+
+func get_player_tutorial_spawn_rotation():
+        return player_tutorial_spawn_point.global_rotation
 
 func get_player_spawn_position():
     return player_spawn_point.global_position
