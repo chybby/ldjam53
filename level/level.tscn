@@ -1,10 +1,13 @@
-[gd_scene load_steps=24 format=3 uid="uid://dycckerh6k1ca"]
+[gd_scene load_steps=27 format=3 uid="uid://dycckerh6k1ca"]
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_8ll5v"]
 [ext_resource type="PackedScene" uid="uid://bf5v5fhrtivwr" path="res://level/level.glb" id="1_kk78k"]
-[ext_resource type="PackedScene" uid="uid://gkwssng0r3uv" path="res://level/shelves.tscn" id="2_vylrv"]
+[ext_resource type="PackedScene" uid="uid://csv2s18dbgn2b" path="res://level/shelves.tscn" id="2_vylrv"]
 [ext_resource type="AudioStream" uid="uid://efyw6jfubo0t" path="res://level/conveyor_belt.wav" id="4_vpprf"]
 [ext_resource type="AudioStream" uid="uid://5d11w23qev0u" path="res://level/alarm.wav" id="5_m3kiu"]
+[ext_resource type="Texture2D" uid="uid://drc0pubbv5jee" path="res://level/logistics_corp_poster.png" id="5_m8vho"]
+[ext_resource type="Texture2D" uid="uid://bo4j3l6l2li0x" path="res://level/pdc_poster.png" id="6_68u8j"]
+[ext_resource type="Texture2D" uid="uid://f87e0xg0otri" path="res://level/ship_for_less_poster.png" id="7_nyakq"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ptx53"]
 
@@ -546,3 +549,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.85391, 3.02026, 11.4878)
 stream = ExtResource("5_m3kiu")
 attenuation_model = 1
 panning_strength = 1.51
+
+[node name="LogisticsCorpPoster" type="Sprite3D" parent="." index="26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.89175, 2.88098, -3.83535)
+texture_filter = 2
+texture = ExtResource("5_m8vho")
+
+[node name="PDCPoster" type="Sprite3D" parent="." index="27"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9.99357, 2.62064, -7.8891)
+texture_filter = 2
+texture = ExtResource("6_68u8j")
+
+[node name="ShipForLessPoster" type="Sprite3D" parent="." index="28"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0.0922142, 0.995739, 4.03081e-09, -0.995739, 0.0922142, -4.35251e-08, -9.95613, 2.95087, 8.27861)
+texture_filter = 2
+texture = ExtResource("7_nyakq")
