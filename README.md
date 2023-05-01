@@ -20,4 +20,4 @@ Controls:
 
 Made for [Ludum Dare 53](https://ldjam.com/events/ludum-dare/53/personal-delivery-conglomerate) by Jelly and Dome.
 
-Made in Godot. All art, models and audio was made from scratch during the jam.
+Made in Godot. All art, models and audio were made from scratch during the jam.
