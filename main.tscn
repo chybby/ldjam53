@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dbt6k1wmtsl8c" path="res://delivery_zone/delivery_zone.tscn" id="6_700lp"]
 [ext_resource type="PackedScene" uid="uid://sdnpsqpox0dm" path="res://package/package.tscn" id="6_okuef"]
 [ext_resource type="PackedScene" uid="uid://ytwls2x44x3h" path="res://scanner/scanner.tscn" id="6_qxux1"]
-[ext_resource type="PackedScene" uid="uid://cqudok8w0xkng" path="res://level/phone.tscn" id="7_2emb6"]
+[ext_resource type="PackedScene" uid="uid://dh45kty58iiin" path="res://level/phone.tscn" id="7_2emb6"]
 [ext_resource type="PackedScene" uid="uid://dg5ljrugpyfv2" path="res://menus/pause_screen.tscn" id="8_dfw4l"]
 [ext_resource type="PackedScene" uid="uid://dsdesb5wro10h" path="res://player/hud.tscn" id="9_s8eft"]
 [ext_resource type="AudioStream" uid="uid://6xy0msy1ntfx" path="res://music.wav" id="12_pario"]
@@ -56,7 +56,7 @@ script = ExtResource("2_5pf3l")
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 2.5127)
 
 [node name="Player" parent="World" instance=ExtResource("4_qqmf7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.5)
+transform = Transform3D(0.999999, 0.000826899, -0.000914906, -0.000824306, 0.999996, 0.00283278, 0.000917243, -0.00283203, 0.999996, 0, 0, 2.5)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="World"]
 environment = SubResource("Environment_lciql")
@@ -69,7 +69,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.32639, 1.04557, 10.6529)
 
 [node name="Phone" parent="World" instance=ExtResource("7_2emb6")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 6.72546, 1.10564, 14.581)
+transform = Transform3D(-0.999993, 0.00296167, -0.00236812, 0.00295959, 0.999995, 0.000880517, 0.00237072, 0.000873506, -0.999997, 6.72546, 1.10564, 14.581)
 
 [node name="PackageSpawnTimer" type="Timer" parent="World"]
 wait_time = 0.991

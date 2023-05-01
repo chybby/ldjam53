@@ -33,6 +33,9 @@ func start_day(day: int, skip_tutorial = false):
     player.reset()
     delivery_zone.reset()
     player.position = level.get_player_spawn_position()
+    if day == 0 and not skip_tutorial:
+        player.position = level.get_player_tutorial_spawn_position()
+        player.rotation = level.get_player_tutorial_spawn_rotation()
 
     for package in get_tree().get_nodes_in_group('packages'):
         package.free()
@@ -45,7 +48,7 @@ func start_day(day: int, skip_tutorial = false):
     # Reset the scanner in case a package was on it.
     scanner.reset()
 
-    if skip_tutorial:
+    if skip_tutorial or day > 0:
         start_package_spawning()
     else:
         phone.start_ringing()

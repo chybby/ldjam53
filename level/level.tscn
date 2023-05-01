@@ -437,12 +437,15 @@ transform = Transform3D(-1, 0, -2.62268e-07, 0, 1, 0, 2.62268e-07, 0, -1, 3.0905
 [node name="PackageSpawnPoint" type="Marker3D" parent="." index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3249, 2.91175, 11.5786)
 
-[node name="PlayerSpawnPoint" type="Marker3D" parent="." index="12"]
+[node name="PlayerTutorialSpawnPoint" type="Marker3D" parent="." index="12"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9.17568, 0, -9.25882)
 
-[node name="CustomerSpawnPoint" type="Marker3D" parent="." index="13"]
+[node name="PlayerSpawnPoint" type="Marker3D" parent="." index="13"]
+
+[node name="CustomerSpawnPoint" type="Marker3D" parent="." index="14"]
 transform = Transform3D(0.996294, -0.0860082, 1.74846e-07, 0.0860082, 0.996294, 0, -1.74198e-07, 1.50382e-08, 1, 9.49657, 2.47111, -5.91984)
 
-[node name="CustomerExitArea" type="Area3D" parent="." index="14"]
+[node name="CustomerExitArea" type="Area3D" parent="." index="15"]
 transform = Transform3D(0.999791, 0.0204014, 1.73855e-07, -0.0204014, 0.999791, -1.85889e-08, -1.74198e-07, 1.50382e-08, 1, -1.88466, 0.124595, -12.1548)
 collision_layer = 16
 collision_mask = 8
@@ -451,7 +454,7 @@ collision_mask = 8
 transform = Transform3D(0.999749, -0.0224256, 2.93383e-10, 0.0224256, 0.999749, 3.91027e-09, -3.8105e-10, -3.9027e-09, 1, -0.136258, -0.00278043, 0)
 shape = SubResource("BoxShape3D_vwcly")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." index="15"]
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="16"]
 transform = Transform3D(0.999998, -0.00202464, 1.74228e-07, 0.00202464, 0.999998, -1.46854e-08, -1.74197e-07, 1.50382e-08, 1, -2.03029, 4.6538, -8.27781)
 light_energy = 1.502
 light_bake_mode = 1
@@ -460,7 +463,7 @@ shadow_opacity = 0.5
 shadow_blur = 2.0
 omni_range = 20.19
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="." index="16"]
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="17"]
 transform = Transform3D(0.999998, -0.00202464, 1.74228e-07, 0.00202464, 0.999998, -1.46854e-08, -1.74197e-07, 1.50382e-08, 1, -8.67977, 4.64033, -8.27781)
 light_energy = 1.502
 light_bake_mode = 1
@@ -469,7 +472,7 @@ shadow_opacity = 0.5
 shadow_blur = 2.0
 omni_range = 20.19
 
-[node name="OmniLight3D3" type="OmniLight3D" parent="." index="17"]
+[node name="OmniLight3D3" type="OmniLight3D" parent="." index="18"]
 transform = Transform3D(0.999998, -0.00202464, 1.74228e-07, 0.00202464, 0.999998, -1.46854e-08, -1.74197e-07, 1.50382e-08, 1, 4.87373, 4.66777, -8.27781)
 light_energy = 1.502
 light_bake_mode = 1
@@ -478,7 +481,7 @@ shadow_opacity = 0.5
 shadow_blur = 2.0
 omni_range = 20.19
 
-[node name="OmniLight3D4" type="OmniLight3D" parent="." index="18"]
+[node name="OmniLight3D4" type="OmniLight3D" parent="." index="19"]
 transform = Transform3D(0.999998, -0.00202464, 1.74228e-07, 0.00202464, 0.999998, -1.46855e-08, -1.74198e-07, 1.50382e-08, 1, -0.0358527, 4.6538, 3.43304)
 light_energy = 1.502
 light_bake_mode = 1
@@ -487,7 +490,7 @@ shadow_opacity = 0.5
 shadow_blur = 2.0
 omni_range = 20.19
 
-[node name="OmniLight3D5" type="OmniLight3D" parent="." index="19"]
+[node name="OmniLight3D5" type="OmniLight3D" parent="." index="20"]
 transform = Transform3D(0.999998, -0.00202464, 1.74228e-07, 0.00202464, 0.999998, -1.46855e-08, -1.74198e-07, 1.50382e-08, 1, -6.68533, 4.64033, 3.43304)
 light_energy = 1.502
 light_bake_mode = 1
@@ -496,7 +499,7 @@ shadow_opacity = 0.5
 shadow_blur = 2.0
 omni_range = 20.19
 
-[node name="OmniLight3D6" type="OmniLight3D" parent="." index="20"]
+[node name="OmniLight3D6" type="OmniLight3D" parent="." index="21"]
 transform = Transform3D(0.999998, -0.00202464, 1.74228e-07, 0.00202464, 0.999998, -1.46855e-08, -1.74198e-07, 1.50382e-08, 1, 6.86817, 4.66777, 3.43304)
 light_energy = 1.502
 light_bake_mode = 1
@@ -505,40 +508,40 @@ shadow_opacity = 0.5
 shadow_blur = 2.0
 omni_range = 20.19
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="21"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="22"]
 libraries = {
 "": SubResource("AnimationLibrary_vlj7p")
 }
 
-[node name="ConveyorSound" type="AudioStreamPlayer3D" parent="." index="22"]
+[node name="ConveyorSound" type="AudioStreamPlayer3D" parent="." index="23"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.17276, 0.727576, 11.7762)
 stream = ExtResource("4_vpprf")
 autoplay = true
 max_distance = 5.0
 panning_strength = 2.47
 
-[node name="ConveyorSound2" type="AudioStreamPlayer3D" parent="." index="23"]
+[node name="ConveyorSound2" type="AudioStreamPlayer3D" parent="." index="24"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.841509, 0.727576, 11.7762)
 stream = ExtResource("4_vpprf")
 autoplay = true
 max_distance = 5.0
 panning_strength = 2.47
 
-[node name="ConveyorSound3" type="AudioStreamPlayer3D" parent="." index="24"]
+[node name="ConveyorSound3" type="AudioStreamPlayer3D" parent="." index="25"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59759, 1.30921, 10.7853)
 stream = ExtResource("4_vpprf")
 autoplay = true
 max_distance = 5.0
 panning_strength = 2.47
 
-[node name="ConveyorSound4" type="AudioStreamPlayer3D" parent="." index="25"]
+[node name="ConveyorSound4" type="AudioStreamPlayer3D" parent="." index="26"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14344, 0.727576, 11.7762)
 stream = ExtResource("4_vpprf")
 autoplay = true
 max_distance = 5.0
 panning_strength = 2.47
 
-[node name="AlarmSound" type="AudioStreamPlayer3D" parent="." index="26"]
+[node name="AlarmSound" type="AudioStreamPlayer3D" parent="." index="27"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.85391, 3.02026, 11.4878)
 stream = ExtResource("5_m3kiu")
 attenuation_model = 1
