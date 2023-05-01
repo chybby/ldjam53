@@ -11,6 +11,8 @@ const GUI = preload("res://menus/gui.gd")
 @onready var hover_controls_label := $HoverControls/Label
 @onready var grab_controls := $GrabControls
 @onready var grab_controls_label := $GrabControls/Label
+@onready var disallow_controls := $DisallowControls
+@onready var disallow_controls_label := $DisallowControls/Label
 @onready var animation_player := $AnimationPlayer
 @onready var dialog_box := $Dialog
 @onready var dialog_label := $Dialog/VBoxContainer/DialogLabel
@@ -22,6 +24,7 @@ func set_cursor(cursor: GUI.Cursor, instructions: String):
     closed_hand_cursor.visible = false
     hover_controls.visible = false
     grab_controls.visible = false
+    disallow_controls.visible = false
     match cursor:
         GUI.Cursor.DOT:
             dot_cursor.visible = true
@@ -33,6 +36,9 @@ func set_cursor(cursor: GUI.Cursor, instructions: String):
             closed_hand_cursor.visible = true
             grab_controls_label.text = instructions
             grab_controls.visible = true
+        GUI.Cursor.DISALLOW:
+            disallow_controls_label.text = instructions
+            disallow_controls.visible = true
 
 func fade_out():
     animation_player.play("fade_out")
