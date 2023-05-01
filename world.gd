@@ -2,6 +2,7 @@ extends Node3D
 
 signal day_ended(packages: int, seconds: int)
 signal phone_call_started
+signal all_packages_spawned
 
 const PackageScene = preload("res://package/package.tscn")
 const Package = preload("res://package/package.gd")
@@ -11,6 +12,7 @@ const CustomerScene = preload("res://customer/customer.tscn")
 @onready var player := $Player
 @onready var scanner := $Scanner
 @onready var delivery_zone := $DeliveryZone
+@onready var store_opener := $StoreOpener
 @onready var id_spawn_point := $DeliveryZone/IDSpawnPoint
 @onready var package_spawn_timer := $PackageSpawnTimer
 @onready var customer_spawn_timer := $CustomerSpawnTimer
@@ -42,6 +44,7 @@ func start_day(day: int, skip_tutorial = false):
     packages_delivered = 0
     player.reset()
     delivery_zone.reset()
+    store_opener.reset()
     player.position = level.get_player_spawn_position()
     if day == 0 and not skip_tutorial:
         player.position = level.get_player_tutorial_spawn_position()
@@ -81,6 +84,7 @@ func _on_package_spawn_timer_timeout():
     packages_left_to_spawn -= 1
     if packages_left_to_spawn == 0:
         package_spawn_timer.stop()
+        all_packages_spawned.emit()
         level.turn_off_light()
 
 func _on_delivery_zone_package_delivered(package: Package):

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://brb5jtft15o2k"]
+[gd_scene load_steps=10 format=3 uid="uid://brb5jtft15o2k"]
 
 [ext_resource type="Script" path="res://store_opener/store_opener.gd" id="1_dmiya"]
+[ext_resource type="AudioStream" uid="uid://r5tfgu1mhiox" path="res://store_opener/open.wav" id="2_6g7jq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_atjn3"]
 albedo_color = Color(0.435294, 0.435294, 0.435294, 1)
@@ -15,45 +16,6 @@ material = SubResource("StandardMaterial3D_atjn3")
 size = Vector3(0.747514, 0.474577, 0.73696)
 
 [sub_resource type="BoxMesh" id="BoxMesh_aj2ca"]
-
-[sub_resource type="Animation" id="Animation_kh52u"]
-resource_name = "open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Switch:rotation")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, -3.14159, -0.715009), Vector3(0, -3.14159, 0.715585)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Closed:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.180392, 0.180392, 0.180392, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Open:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.180392, 0.180392, 0.180392, 1), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_myhf6"]
 length = 0.001
@@ -94,6 +56,60 @@ tracks/2/keys = {
 "values": [Color(0.180392, 0.180392, 0.180392, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_kh52u"]
+resource_name = "open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Switch:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, -0.715009), Vector3(0, -3.14159, 0.715585)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Closed:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.180392, 0.180392, 0.180392, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Open:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.180392, 0.180392, 0.180392, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_6g7jq")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/3/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w16wx"]
 _data = {
 "RESET": SubResource("Animation_myhf6"),
@@ -114,7 +130,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.111368, 0)
 shape = SubResource("BoxShape3D_ds0lx")
 
 [node name="Switch" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.0473159, 0.373887, -1.57834e-08, 0.0410833, -0.430608, 0, 4.13649e-09, 3.26862e-08, 0.180541, 0, 0.113941, 0)
+transform = Transform3D(0.0473159, 0.373887, 4.57704e-07, 0.0410833, -0.430608, 0, -1.19954e-07, -9.47871e-07, 0.180541, 0, 0.113941, 0)
 mesh = SubResource("BoxMesh_aj2ca")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -130,3 +146,5 @@ text = "CLOSED"
 transform = Transform3D(4.37114e-08, 1, -4.37114e-08, -8.74228e-08, 4.37114e-08, 1, 1, -4.37114e-08, 8.74228e-08, 0.5, 0, 0)
 modulate = Color(0.180392, 0.180392, 0.180392, 1)
 text = "OPEN"
+
+[node name="Audio" type="AudioStreamPlayer3D" parent="."]

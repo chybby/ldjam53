@@ -38,7 +38,7 @@ func _process(delta):
         gui.set_cursor(GUI.Cursor.OPEN_HAND, 'Grab')
     elif is_instance_valid(player.hovered_object) and player.hovered_object is Phone and player.hovered_object.is_ringing():
         gui.set_cursor(GUI.Cursor.OPEN_HAND, 'Pick Up')
-    elif is_instance_valid(player.hovered_object) and player.hovered_object is StoreOpener and not player.hovered_object.is_store_open():
+    elif is_instance_valid(player.hovered_object) and player.hovered_object is StoreOpener and player.hovered_object.can_open_store():
         gui.set_cursor(GUI.Cursor.OPEN_HAND, 'Open Store')
     else:
         gui.set_cursor(GUI.Cursor.DOT, '')
