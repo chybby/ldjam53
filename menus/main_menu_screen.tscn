@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxmtgq1vffaeq"]
+[gd_scene load_steps=4 format=3 uid="uid://dxmtgq1vffaeq"]
 
 [ext_resource type="Theme" path="res://menus/ui_theme.tres" id="1_t0a5g"]
 [ext_resource type="Script" path="res://menus/main_menu_screen.gd" id="2_t6r8i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xix40"]
+font_size = 60
+font_color = Color(1, 0.984314, 0.890196, 1)
+outline_size = 11
+outline_color = Color(0.345098, 0.211765, 0, 1)
 
 [node name="MainMenuScreen" type="Control"]
 layout_mode = 3
@@ -13,42 +19,38 @@ grow_vertical = 2
 theme = ExtResource("1_t0a5g")
 script = ExtResource("2_t6r8i")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 0
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="Title" type="Label" parent="Panel"]
+[node name="Title" type="Label" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -246.5
-offset_top = -101.0
-offset_right = 246.5
-offset_bottom = -8.0
+anchor_bottom = 1.0
+offset_left = -468.0
+offset_top = -100.0
+offset_right = 468.0
+offset_bottom = -7.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 65
-text = "Cool Game Title"
+grow_vertical = 0
+text = "Personal Delivery Conglomerate"
+label_settings = SubResource("LabelSettings_xix40")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StartButton" type="Button" parent="Panel"]
+[node name="StartButton" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 6
+anchor_left = 1.0
 anchor_top = 0.5
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -59.0
-offset_top = 31.0
-offset_right = 59.0
-offset_bottom = 75.0
-grow_horizontal = 2
+offset_left = -259.0
+offset_top = -36.0
+offset_right = -109.0
+offset_bottom = 39.0
+grow_horizontal = 0
 grow_vertical = 2
+theme_override_font_sizes/font_size = 29
 text = "Start"
 
-[connection signal="pressed" from="Panel/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]

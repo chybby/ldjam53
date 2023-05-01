@@ -24,9 +24,14 @@ var unclaimed_packages: Array[Package] = []
 # Packages that haven't been given to the right customer yet.
 var undelivered_packages: Array[Package] = []
 
+func _ready():
+    player.position = level.get_player_tutorial_spawn_position()
+    player.rotation = level.get_player_tutorial_spawn_rotation()
+    player.camera.rotate_x(.25)
+
 func start_day(day: int, skip_tutorial = false):
     print('Starting day %d' % day)
-    packages_left_to_spawn = 20
+    packages_left_to_spawn = 10 + day * 5
     customers_left_to_spawn = packages_left_to_spawn
     unclaimed_packages = []
     undelivered_packages = []
@@ -36,6 +41,7 @@ func start_day(day: int, skip_tutorial = false):
     if day == 0 and not skip_tutorial:
         player.position = level.get_player_tutorial_spawn_position()
         player.rotation = level.get_player_tutorial_spawn_rotation()
+        player.camera.rotate_x(.25)
 
     for package in get_tree().get_nodes_in_group('packages'):
         package.free()
@@ -56,6 +62,7 @@ func start_day(day: int, skip_tutorial = false):
 func start_package_spawning():
     package_spawn_timer.start()
     level.turn_on_light()
+    _on_package_spawn_timer_timeout()
 
 func _on_package_spawn_timer_timeout():
     var package := PackageScene.instantiate()

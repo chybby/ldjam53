@@ -220,6 +220,7 @@ stream = ExtResource("4_gwcb5")
 [node name="IdleSound" type="AudioStreamPlayer3D" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06845, 0)
 stream = ExtResource("5_mdo0r")
+volume_db = -20.0
 autoplay = true
 max_distance = 5.0
 
