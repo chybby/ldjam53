@@ -18,6 +18,7 @@ const CustomerScene = preload("res://customer/customer.tscn")
 @onready var customer_spawn_timer := $CustomerSpawnTimer
 @onready var phone := $Phone
 @onready var package_display_label := $PackageDisplay/Label3D
+@onready var quit_job_button := $QuitJobButton
 
 var customer_queue = []
 
@@ -37,14 +38,14 @@ func _ready():
     player.position = level.get_player_tutorial_spawn_position()
     player.rotation = level.get_player_tutorial_spawn_rotation()
     player.camera.rotate_x(.25)
-    package_display_label.text = ''
+    remove_child(quit_job_button)
 
 func start_day(day: int, skip_tutorial = false):
     print('Starting day %d' % day)
     current_day = day
     match day:
         0:
-            packages_left_to_spawn = 1#5
+            packages_left_to_spawn = 5
             package_spawn_timer.wait_time = 10
         1:
             packages_left_to_spawn = 15
@@ -81,6 +82,10 @@ func start_day(day: int, skip_tutorial = false):
         phone.start_ringing()
 
 func start_package_spawning():
+    if current_day == 2:
+        remove_child(store_opener)
+        add_child(quit_job_button)
+        quit_job_button.visible = true
     package_display_label.text = '???' if current_day == 2 else str(packages_left_to_spawn)
     package_spawn_timer.start()
     level.turn_on_light()

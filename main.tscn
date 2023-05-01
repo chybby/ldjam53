@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bxdyhmyeeg4y0"]
+[gd_scene load_steps=23 format=3 uid="uid://bxdyhmyeeg4y0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dkgit"]
 [ext_resource type="Script" path="res://world.gd" id="2_5pf3l"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dg5ljrugpyfv2" path="res://menus/pause_screen.tscn" id="8_dfw4l"]
 [ext_resource type="PackedScene" uid="uid://brb5jtft15o2k" path="res://store_opener/store_opener.tscn" id="9_nljgg"]
 [ext_resource type="PackedScene" uid="uid://dsdesb5wro10h" path="res://player/hud.tscn" id="9_s8eft"]
+[ext_resource type="PackedScene" uid="uid://b5jcdcsvglr2j" path="res://quit_job/quit_job_button.tscn" id="10_f4lxa"]
 [ext_resource type="AudioStream" uid="uid://6xy0msy1ntfx" path="res://music.wav" id="12_pario"]
 [ext_resource type="PackedScene" uid="uid://t7bpxt76sj6g" path="res://menus/game_over_screen.tscn" id="13_0b3ds"]
 
@@ -202,6 +203,10 @@ text = "15"
 font_size = 140
 outline_size = 19
 
+[node name="QuitJobButton" parent="World" instance=ExtResource("10_f4lxa")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.71852, 1.78619, 6.31183)
+visible = false
+
 [node name="GUI" type="Control" parent="."]
 process_mode = 3
 layout_mode = 3
@@ -240,6 +245,7 @@ autoplay = true
 [connection signal="timeout" from="World/PackageSpawnTimer" to="World" method="_on_package_spawn_timer_timeout"]
 [connection signal="timeout" from="World/CustomerSpawnTimer" to="World" method="_on_customer_spawn_timer_timeout"]
 [connection signal="store_opened" from="World/StoreOpener" to="World" method="_on_store_opener_store_opened"]
+[connection signal="job_quitted" from="World/QuitJobButton" to="." method="_on_quit_job_button_job_quitted"]
 [connection signal="call_ended" from="GUI" to="World/StoreOpener" method="_on_gui_call_ended"]
 [connection signal="game_started" from="GUI" to="." method="_on_gui_game_started"]
 [connection signal="mouse_sensitivity_changed" from="GUI" to="." method="_on_gui_mouse_sensitivity_changed"]
