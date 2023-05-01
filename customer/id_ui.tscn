@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cx4gere3p5id0"]
+[gd_scene load_steps=6 format=3 uid="uid://cx4gere3p5id0"]
 
 [ext_resource type="Script" path="res://customer/id_ui.gd" id="1_bcju4"]
+[ext_resource type="Texture2D" uid="uid://7s0p162k2ge4" path="res://customer/id_picture.png" id="2_gnv5g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkryj"]
 bg_color = Color(0.878431, 0.870588, 0.796078, 1)
@@ -23,11 +24,6 @@ font_color = Color(0.160784, 0.160784, 0.160784, 1)
 line_spacing = -30.0
 font_size = 85
 font_color = Color(0.160784, 0.160784, 0.160784, 1)
-
-[sub_resource type="Gradient" id="Gradient_mv1hs"]
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_gi2dx"]
-gradient = SubResource("Gradient_mv1hs")
 
 [node name="IDUI" type="Control"]
 custom_minimum_size = Vector2(1280, 720)
@@ -67,7 +63,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 65.0
 offset_top = -286.0
-offset_right = 1305.0
+offset_right = 1255.0
 offset_bottom = -29.0
 grow_vertical = 0
 scale = Vector2(0.992912, 1)
@@ -77,9 +73,10 @@ label_settings = SubResource("LabelSettings_qfsfh")
 autowrap_mode = 2
 
 [node name="TextureRect" type="TextureRect" parent="Panel"]
+texture_filter = 1
 layout_mode = 0
 offset_left = 53.0
 offset_top = 54.0
 offset_right = 376.0
 offset_bottom = 377.0
-texture = SubResource("GradientTexture1D_gi2dx")
+texture = ExtResource("2_gnv5g")

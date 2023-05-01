@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqwc3k2evasxe"]
+[gd_scene load_steps=4 format=3 uid="uid://dqwc3k2evasxe"]
 
 [ext_resource type="PackedScene" uid="uid://cx4gere3p5id0" path="res://customer/id_ui.tscn" id="1_n3e58"]
+[ext_resource type="Script" path="res://customer/id.gd" id="1_q5je4"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_vmdsc"]
 viewport_path = NodePath("SubViewport")
 
 [node name="ID" type="Node3D"]
-transform = Transform3D(-4.23137e-08, 0.250853, 0.968025, 1.09651e-08, 0.968025, -0.250853, -1, 8.55992e-16, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1.29736e-07, -0.250853, -0.968025, 1.09651e-08, 0.968025, -0.250853, 1, 2.19303e-08, 1.28339e-07, 0, 0, 0)
+script = ExtResource("1_q5je4")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.035, 0, 0, 0, -0.000259614, 0.034999, 0, -0.034999, -0.000259614, 0.0020901, 0.0272079, -0.00700639)

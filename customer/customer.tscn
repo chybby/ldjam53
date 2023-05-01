@@ -1,17 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3wfql4cpge1g"]
+[gd_scene load_steps=7 format=3 uid="uid://d3wfql4cpge1g"]
 
 [ext_resource type="Script" path="res://customer/customer.gd" id="1_q22ik"]
 [ext_resource type="Texture2D" uid="uid://b3sjqpkbeinhu" path="res://customer/customer.png" id="1_xdkae"]
+[ext_resource type="PackedScene" uid="uid://by4owodvn0i64" path="res://customer/speech_bubble.tscn" id="3_nw6go"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lxroy"]
-radius = 0.309737
-height = 1.84418
+radius = 0.209763
+height = 1.32227
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xkeib"]
-radius = 0.484001
-height = 1.84302
+radius = 0.376093
+height = 1.28964
 
-[node name="customer" type="CharacterBody3D"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_mlgs7"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Customer" type="CharacterBody3D"]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 0.00682569, -0.00434351, -0.00145626)
 collision_layer = 8
 collision_mask = 55
@@ -19,6 +23,7 @@ script = ExtResource("1_q22ik")
 follow_distance = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.258624, 0)
 shape = SubResource("CapsuleShape3D_lxroy")
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -26,13 +31,27 @@ collision_layer = 8
 collision_mask = 63
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.268236, 0)
 shape = SubResource("CapsuleShape3D_xkeib")
 
 [node name="Character" type="Sprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -0.2125, 0)
 billboard = 2
-texture_filter = 0
+double_sided = false
+texture_filter = 2
 texture = ExtResource("1_xdkae")
+
+[node name="Speech" type="Sprite3D" parent="."]
+transform = Transform3D(0.175, 0, 0, 0, 0.175, 0, 0, 0, 0.175, 0, 1.16643, 0)
+visible = false
+billboard = 2
+texture = SubResource("ViewportTexture_mlgs7")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1280, 720)
+
+[node name="SpeechBubble" parent="SubViewport" instance=ExtResource("3_nw6go")]
 
 [connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

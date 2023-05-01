@@ -5,7 +5,6 @@ signal day_ended
 const PackageScene = preload("res://package/package.tscn")
 const Package = preload("res://package/package.gd")
 const CustomerScene = preload("res://customer/customer.tscn")
-const IDScene = preload("res://customer/id.tscn")
 
 @onready var level := $Level
 @onready var player := $Player
@@ -14,7 +13,6 @@ const IDScene = preload("res://customer/id.tscn")
 @onready var id_spawn_point := $DeliveryZone/IDSpawnPoint
 @onready var package_spawn_timer := $PackageSpawnTimer
 
-var id_queue = []
 var customer_queue = []
 
 var packages_left_to_spawn: int
@@ -75,25 +73,15 @@ func _on_customer_spawn_timer_timeout():
 
     var customer := CustomerScene.instantiate()
     customer.position = level.get_customer_spawn_position()
-    customer.needed_package = unclaimed_packages.pop_back()
-    var p = delivery_zone
+    var follow_target = delivery_zone
     if not customer_queue.is_empty():
-        p = customer_queue[-1]
+        follow_target = customer_queue[-1]
     customer_queue.push_back(customer)
-    customer.setup(p, level.get_customer_exit_position())
     var customer_sprite = customer.get_node("Character")
     customer_sprite.modulate = Color(1,1,1,0)
 
-    var id := IDScene.instantiate()
-    id.position = id_spawn_point.global_position
-    id.visible = false
-    add_child(id)
-    var id_ui := id.get_node("SubViewport/IDUI")
-    id_ui.set_contents(
-        customer.needed_package.first_name + "\n" + customer.needed_package.last_name,
-        customer.needed_package.address._to_string()
-    )
-    id_queue.push_back(id)
+    var package = unclaimed_packages.pop_at(randi() % unclaimed_packages.size())
+    customer.setup(follow_target, level.get_customer_exit_position(), package)
 
     customers_left_to_spawn -= 1
     add_child(customer)

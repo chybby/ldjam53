@@ -87,7 +87,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hxrih"]
-size = Vector3(2.85264, 1, 5.32611)
+size = Vector3(2.09285, 1, 2.36244)
 
 [node name="DeliveryZone" type="Node3D"]
 script = ExtResource("1_g2s3x")
@@ -142,7 +142,7 @@ collision_layer = 32
 collision_mask = 8
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WaitingArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.90485, 0, -0.116076)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33907, 0, -0.116076)
 shape = SubResource("BoxShape3D_hxrih")
 
 [node name="IDSpawnPoint" type="Marker3D" parent="."]
