@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" path="res://level/level.gd" id="1_8ll5v"]
 [ext_resource type="PackedScene" uid="uid://bf5v5fhrtivwr" path="res://level/level.glb" id="1_kk78k"]
-[ext_resource type="PackedScene" uid="uid://gkwssng0r3uv" path="res://level/shelves.tscn" id="2_vylrv"]
+[ext_resource type="PackedScene" uid="uid://csv2s18dbgn2b" path="res://level/shelves.tscn" id="2_vylrv"]
 [ext_resource type="AudioStream" uid="uid://efyw6jfubo0t" path="res://level/conveyor_belt.wav" id="4_vpprf"]
 [ext_resource type="Texture2D" uid="uid://drc0pubbv5jee" path="res://level/logistics_corp_poster.png" id="5_m8vho"]
 [ext_resource type="Texture2D" uid="uid://bo4j3l6l2li0x" path="res://level/pdc_poster.png" id="6_68u8j"]
 [ext_resource type="Texture2D" uid="uid://f87e0xg0otri" path="res://level/ship_for_less_poster.png" id="7_nyakq"]
-[ext_resource type="Material" path="res://package/materials/personal_delivery_conglomerate.tres" id="8_rad7x"]
+[ext_resource type="Material" uid="uid://dspm3tbxb0wqd" path="res://package/materials/personal_delivery_conglomerate.tres" id="8_rad7x"]
 [ext_resource type="AudioStream" uid="uid://5d11w23qev0u" path="res://level/alarm.wav" id="9_q4r8r"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ptx53"]
