@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ytwls2x44x3h" path="res://scanner/scanner.tscn" id="6_qxux1"]
 [ext_resource type="PackedScene" uid="uid://dh45kty58iiin" path="res://level/phone.tscn" id="7_2emb6"]
 [ext_resource type="PackedScene" uid="uid://dg5ljrugpyfv2" path="res://menus/pause_screen.tscn" id="8_dfw4l"]
+[ext_resource type="PackedScene" uid="uid://brb5jtft15o2k" path="res://store_opener/store_opener.tscn" id="9_nljgg"]
 [ext_resource type="PackedScene" uid="uid://dsdesb5wro10h" path="res://player/hud.tscn" id="9_s8eft"]
 [ext_resource type="AudioStream" uid="uid://6xy0msy1ntfx" path="res://music.wav" id="12_pario"]
 [ext_resource type="PackedScene" uid="uid://t7bpxt76sj6g" path="res://menus/game_over_screen.tscn" id="13_0b3ds"]
@@ -179,7 +180,9 @@ company = 2
 
 [node name="CustomerSpawnTimer" type="Timer" parent="World"]
 wait_time = 5.0
-autostart = true
+
+[node name="StoreOpener" parent="World" instance=ExtResource("9_nljgg")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 4.70755, 1.78317, 6.35012)
 
 [node name="GUI" type="Control" parent="."]
 process_mode = 3
@@ -217,6 +220,7 @@ autoplay = true
 [connection signal="call_started" from="World/Phone" to="World" method="_on_phone_call_started"]
 [connection signal="timeout" from="World/PackageSpawnTimer" to="World" method="_on_package_spawn_timer_timeout"]
 [connection signal="timeout" from="World/CustomerSpawnTimer" to="World" method="_on_customer_spawn_timer_timeout"]
+[connection signal="store_opened" from="World/StoreOpener" to="World" method="_on_store_opener_store_opened"]
 [connection signal="game_started" from="GUI" to="." method="_on_gui_game_started"]
 [connection signal="mouse_sensitivity_changed" from="GUI" to="." method="_on_gui_mouse_sensitivity_changed"]
 [connection signal="unpaused" from="GUI" to="." method="_on_gui_unpaused"]

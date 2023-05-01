@@ -18,7 +18,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_8ig33"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_re68p"]
 resource_name = "TubeMedium_Cylinder002"
 _surfaces = [{
 "aabb": AABB(-0.0914388, -0.486069, -0.0914388, 0.182878, 0.972137, 0.182878),
@@ -47,7 +47,7 @@ shape = 1
 shape = ExtResource("2_3u2a5")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("ArrayMesh_8ig33")
+mesh = SubResource("ArrayMesh_re68p")
 
 [node name="Audio" type="AudioStreamPlayer3D" parent="."]
 max_distance = 8.0

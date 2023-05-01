@@ -3,6 +3,7 @@ extends Node
 const GUI = preload("res://menus/gui.gd")
 const Package = preload("res://package/package.gd")
 const Phone = preload("res://level/phone.gd")
+const StoreOpener = preload("res://store_opener/store_opener.gd")
 
 @onready var gui := $GUI
 @onready var world := $World
@@ -37,6 +38,8 @@ func _process(delta):
         gui.set_cursor(GUI.Cursor.OPEN_HAND, 'Grab')
     elif is_instance_valid(player.hovered_object) and player.hovered_object is Phone and player.hovered_object.is_ringing():
         gui.set_cursor(GUI.Cursor.OPEN_HAND, 'Pick Up')
+    elif is_instance_valid(player.hovered_object) and player.hovered_object is StoreOpener and not player.hovered_object.is_store_open():
+        gui.set_cursor(GUI.Cursor.OPEN_HAND, 'Open Store')
     else:
         gui.set_cursor(GUI.Cursor.DOT, '')
 

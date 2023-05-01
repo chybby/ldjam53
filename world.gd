@@ -13,6 +13,7 @@ const CustomerScene = preload("res://customer/customer.tscn")
 @onready var delivery_zone := $DeliveryZone
 @onready var id_spawn_point := $DeliveryZone/IDSpawnPoint
 @onready var package_spawn_timer := $PackageSpawnTimer
+@onready var customer_spawn_timer := $CustomerSpawnTimer
 @onready var phone := $Phone
 
 var customer_queue = []
@@ -96,10 +97,10 @@ func _on_delivery_zone_package_delivered(package: Package):
         # End the day.
         day_ended.emit(packages_delivered, (Time.get_ticks_msec() - start_time)/1000)
 
-func _on_customer_spawn_timer_timeout():
-    if packages_left_to_spawn > 0 or customers_left_to_spawn == 0:
-        return
+func start_customer_spawning():
+    customer_spawn_timer.start()
 
+func _on_customer_spawn_timer_timeout():
     var customer := CustomerScene.instantiate()
     customer.position = level.get_customer_spawn_position()
     var follow_target = delivery_zone
@@ -117,6 +118,9 @@ func _on_customer_spawn_timer_timeout():
     var tween = get_tree().create_tween()
     tween.tween_property(customer_sprite, "modulate", Color(1,1,1,1), 1)
 
+    if customers_left_to_spawn == 0:
+        customer_spawn_timer.stop()
+
 func _on_phone_call_started():
     player.can_move = false
     phone_call_started.emit()
@@ -125,3 +129,7 @@ func finish_call():
     phone.finish_call()
     player.can_move = true
     start_package_spawning()
+
+func _on_store_opener_store_opened():
+    print("store opened")
+    start_customer_spawning()
