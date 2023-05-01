@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://customer/customer.gd" id="1_q22ik"]
 [ext_resource type="Texture2D" uid="uid://b3sjqpkbeinhu" path="res://customer/customer.png" id="1_xdkae"]
-[ext_resource type="PackedScene" uid="uid://dkckehtvk6pyy" path="res://customer/speech_bubble.tscn" id="3_nw6go"]
+[ext_resource type="PackedScene" uid="uid://by4owodvn0i64" path="res://customer/speech_bubble.tscn" id="3_nw6go"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lxroy"]
 radius = 0.209763
