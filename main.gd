@@ -28,7 +28,7 @@ func _input(event):
         gui.show_pause_screen()
         get_tree().paused = true
     elif event.is_action_pressed("skip_day"):
-        _on_world_day_ended()
+        _on_world_day_ended(10, 59)
 
 func _process(delta):
     if player.held_object != null:
@@ -57,8 +57,10 @@ func _on_gui_mouse_sensitivity_changed(mouse_sensitivity):
 func _on_gui_volume_changed(volume: float):
     AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume)
 
-func _on_world_day_ended():
+func _on_world_day_ended(packages: int, seconds: int):
     await gui.fade_out()
+    gui.show_game_over_screen(packages, seconds)
+    await gui.game_over_screen_closed
     day += 1
     world.start_day(day)
     await gui.fade_in()

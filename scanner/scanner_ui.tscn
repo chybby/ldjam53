@@ -44,8 +44,8 @@ offset_bottom = 0.0639954
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_spacing = -40
-theme_override_font_sizes/font_size = 145
-text = "Jadam Joshuasonsonsonson"
+theme_override_font_sizes/font_size = 154
+text = "Aginavesh Aginaveshson"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -53,17 +53,16 @@ autowrap_mode = 2
 [node name="AddressLabel" type="Label" parent="Panel"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.406
+anchor_top = 0.439
 anchor_right = 1.0
 anchor_bottom = 0.994
-offset_top = -0.0880127
-offset_bottom = -0.112
+offset_top = -0.120026
+offset_bottom = -0.52002
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/line_spacing = -30
-theme_override_font_sizes/font_size = 113
-text = "123 Wallaby Way Long Street Name
-Port Moresby State University NSW 1900 "
+theme_override_font_sizes/font_size = 136
+text = "99 Honeysuckle Esplanade
+Port Roythopardu NSW 1930"
 horizontal_alignment = 1
-vertical_alignment = 1
 autowrap_mode = 2

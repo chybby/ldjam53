@@ -1,6 +1,6 @@
 extends Node3D
 
-signal day_ended
+signal day_ended(packages: int, seconds: int)
 signal phone_call_started
 
 const PackageScene = preload("res://package/package.tscn")
@@ -24,6 +24,9 @@ var unclaimed_packages: Array[Package] = []
 # Packages that haven't been given to the right customer yet.
 var undelivered_packages: Array[Package] = []
 
+var packages_delivered := 0
+var start_time := 0
+
 func _ready():
     player.position = level.get_player_tutorial_spawn_position()
     player.rotation = level.get_player_tutorial_spawn_rotation()
@@ -35,6 +38,7 @@ func start_day(day: int, skip_tutorial = false):
     customers_left_to_spawn = packages_left_to_spawn
     unclaimed_packages = []
     undelivered_packages = []
+    packages_delivered = 0
     player.reset()
     delivery_zone.reset()
     player.position = level.get_player_spawn_position()
@@ -63,6 +67,7 @@ func start_package_spawning():
     package_spawn_timer.start()
     level.turn_on_light()
     _on_package_spawn_timer_timeout()
+    start_time = Time.get_ticks_msec()
 
 func _on_package_spawn_timer_timeout():
     var package := PackageScene.instantiate()
@@ -81,6 +86,7 @@ func _on_delivery_zone_package_delivered(package: Package):
     package.remove_from_group('pickup')
     player.drop_object()
     undelivered_packages.erase(package)
+    packages_delivered += 1
     print('packages left to deliver: %d' % undelivered_packages.size())
 
     package.queue_free()
@@ -88,7 +94,7 @@ func _on_delivery_zone_package_delivered(package: Package):
     if undelivered_packages.is_empty():
         await get_tree().create_timer(3.0).timeout
         # End the day.
-        day_ended.emit()
+        day_ended.emit(packages_delivered, (Time.get_ticks_msec() - start_time)/1000)
 
 func _on_customer_spawn_timer_timeout():
     if packages_left_to_spawn > 0 or customers_left_to_spawn == 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bxdyhmyeeg4y0"]
+[gd_scene load_steps=19 format=3 uid="uid://bxdyhmyeeg4y0"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_dkgit"]
 [ext_resource type="Script" path="res://world.gd" id="2_5pf3l"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dg5ljrugpyfv2" path="res://menus/pause_screen.tscn" id="8_dfw4l"]
 [ext_resource type="PackedScene" uid="uid://dsdesb5wro10h" path="res://player/hud.tscn" id="9_s8eft"]
 [ext_resource type="AudioStream" uid="uid://6xy0msy1ntfx" path="res://music.wav" id="12_pario"]
+[ext_resource type="PackedScene" uid="uid://t7bpxt76sj6g" path="res://menus/game_over_screen.tscn" id="13_0b3ds"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j6kb4"]
 sky_top_color = Color(0.27451, 0.45098, 0.556863, 1)
@@ -199,6 +200,10 @@ visible = false
 layout_mode = 1
 
 [node name="HUD" parent="GUI" instance=ExtResource("9_s8eft")]
+visible = false
+layout_mode = 1
+
+[node name="GameOverScreen" parent="GUI" instance=ExtResource("13_0b3ds")]
 visible = false
 layout_mode = 1
 
