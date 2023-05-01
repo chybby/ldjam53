@@ -26,6 +26,12 @@ func show_pause_screen():
 func set_cursor(cursor: Cursor):
     hud.set_cursor(cursor)
 
+func fade_out():
+    return hud.fade_out()
+
+func fade_in():
+    return hud.fade_in()
+
 func _on_pause_screen_closed():
     pause_screen.visible = false
     pause_screen.set_process_input(false)

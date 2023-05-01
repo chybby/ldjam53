@@ -53,5 +53,7 @@ func _on_gui_volume_changed(volume: float):
     AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), volume)
 
 func _on_world_day_ended():
+    await gui.fade_out()
     day += 1
     world.start_day(day)
+    await gui.fade_in()

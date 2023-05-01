@@ -61,8 +61,7 @@ func _on_delivery_zone_package_delivered(package: Package):
     package.queue_free()
 
     if undelivered_packages.is_empty():
-        # TODO: fade out
-
+        await get_tree().create_timer(3.0).timeout
         # End the day.
         day_ended.emit()
 
